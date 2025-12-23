@@ -1469,11 +1469,10 @@ header {
 }
 
 .logo-img {
-    height: 40px;
+    height: 0px; /* ← AQUI: aumentado de 40px para 60px */
     width: auto;
     filter: drop-shadow(0 0 5px rgba(108, 92, 231, 0.5));
 }
-
 .logo-text {
     font-size: 1.8rem;
     font-weight: 800;
