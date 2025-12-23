@@ -70,18 +70,20 @@ window.addEventListener('load', animateOnScroll);
 // Combo Builder Functionality
 const comboBuilder = {
     services: {
-        netflix: { name: 'Netflix 4K Ultra HD', price: 22.90, icon: 'fab fa-netflix' },
-        prime: { name: 'Prime Video', price: 8.90, icon: 'fab fa-amazon' },
-        hulu: { name: 'Hulu', price: 12.90, icon: 'fab fa-hulu' },
-        espn: { name: 'ESPN', price: 9.90, icon: 'fas fa-trophy' },
-        youtube: { name: 'YouTube Premium', price: 14.90, icon: 'fab fa-youtube' },
+        netflix: { name: 'Netflix 4K Ultra HD', price: 22.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg' },
+        prime: { name: 'Prime Video', price: 8.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg' },
+        hulu: { name: 'Hulu', price: 12.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/03/Hulu_logo_%282014%29.svg' },
+        espn: { name: 'ESPN', price: 9.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/ESPN_wordmark.svg' },
+        youtube: { name: 'YouTube Premium', price: 14.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg' },
         paramount: { name: 'Paramount+', price: 10.90, icon: 'fas fa-film' },
-        viki: { name: 'Viki', price: 7.90, icon: 'fas fa-tv' },
-        deezer: { name: 'Deezer Premium', price: 11.90, icon: 'fab fa-deezer' },
-        canva: { name: 'Canva Pro', price: 15.90, icon: 'fas fa-palette' },
-        crunchyroll: { name: 'Crunchyroll Mega Fan', price: 9.90, icon: 'fas fa-tv' },
+        viki: { name: 'Viki', price: 7.90, icon: 'fas fa-globe-asia' },
+        deezer: { name: 'Deezer Premium', price: 11.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Deezer_logo.svg' },
+        canva: { name: 'Canva Pro', price: 15.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg' },
+        crunchyroll: { name: 'Crunchyroll Mega Fan', price: 9.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png' },
         chatgpt: { name: 'ChatGPT Plus', price: 29.90, icon: 'fas fa-robot' },
-        disney: { name: 'Disney+ Premium', price: 19.90, icon: 'fas fa-crown' }
+        disney: { name: 'Disney+ Premium', price: 19.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg' },
+        hbo: { name: 'HBO Max', price: 16.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg' },
+        apple: { name: 'Apple TV+', price: 13.90, icon: 'fab fa-apple' }
     },
     
     selectedServices: [],
@@ -120,6 +122,11 @@ const comboBuilder = {
             this.selectedServices = [];
             this.updateSummary();
         });
+        
+        // Combo Buy Button
+        document.getElementById('combo-buy-btn')?.addEventListener('click', (e) => {
+            this.handleComboPurchase(e);
+        });
     },
     
     toggleService(serviceId, isSelected) {
@@ -138,6 +145,32 @@ const comboBuilder = {
         return 0; // No discount
     },
     
+    handleComboPurchase(e) {
+        if (this.selectedServices.length < 3) {
+            e.preventDefault();
+            alert('Selecione pelo menos 3 serviços para habilitar o desconto de combo!');
+            return;
+        }
+        
+        // Calculate totals
+        const subtotal = this.selectedServices.reduce((sum, serviceId) => {
+            return sum + this.services[serviceId].price;
+        }, 0);
+        
+        const discountPercentage = this.calculateDiscount(this.selectedServices.length);
+        const discount = subtotal * discountPercentage;
+        const total = subtotal - discount;
+        const discountText = `${(discountPercentage * 100).toFixed(0)}%`;
+        
+        // Create WhatsApp message
+        const serviceNames = this.selectedServices.map(id => this.services[id].name).join('\n• ');
+        const whatsappMessage = `Olá EASYSTREAM!\n\nGostaria de comprar o seguinte combo:\n\n• ${serviceNames}\n\n📊 RESUMO DO PEDIDO:\nQuantidade de serviços: ${this.selectedServices.length}\nSubtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\nDesconto aplicado: ${discountText}\nValor total: R$ ${total.toFixed(2).replace('.', ',')}\n\nPor favor, me envie as informações para pagamento via PIX.`;
+        
+        // Open WhatsApp
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        window.open(`https://wa.me/5511962094589?text=${encodedMessage}`, '_blank');
+    },
+    
     updateSummary() {
         const selectedServicesContainer = document.getElementById('selected-services');
         const subtotalElement = document.getElementById('subtotal');
@@ -153,10 +186,9 @@ const comboBuilder = {
         if (this.selectedServices.length === 0) {
             selectedServicesContainer.innerHTML = '<p class="empty-message">Nenhum serviço selecionado ainda</p>';
             this.updateTotals(0, 0, 0, '0%');
+            comboBuyBtn.disabled = true;
             comboBuyBtn.style.opacity = '0.6';
             comboBuyBtn.style.cursor = 'not-allowed';
-            comboBuyBtn.href = '#';
-            comboBuyBtn.onclick = (e) => e.preventDefault();
             return;
         }
         
@@ -165,9 +197,17 @@ const comboBuilder = {
             const service = this.services[serviceId];
             const serviceElement = document.createElement('div');
             serviceElement.className = 'selected-service-item';
+            
+            let iconHTML = '';
+            if (service.icon.startsWith('http')) {
+                iconHTML = `<img src="${service.icon}" alt="${service.name}" class="service-icon">`;
+            } else {
+                iconHTML = `<i class="${service.icon}"></i>`;
+            }
+            
             serviceElement.innerHTML = `
                 <div class="selected-service-name">
-                    <i class="${service.icon}"></i>
+                    ${iconHTML}
                     ${service.name}
                 </div>
                 <div class="selected-service-price">
@@ -189,23 +229,15 @@ const comboBuilder = {
         
         this.updateTotals(subtotal, discount, total, discountText);
         
-        // Update WhatsApp link
+        // Update button state
         if (this.selectedServices.length >= 3) {
-            const serviceNames = this.selectedServices.map(id => this.services[id].name).join('\n• ');
-            const whatsappMessage = `Olá StreamFácil! Gostaria de comprar o seguinte combo:\n\n• ${serviceNames}\n\nQuantidade de serviços: ${this.selectedServices.length}\nSubtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\nDesconto aplicado: ${discountText}\nValor total: R$ ${total.toFixed(2).replace('.', ',')}\n\nPor favor, me envie as informações para pagamento via PIX.`;
-            const encodedMessage = encodeURIComponent(whatsappMessage);
-            comboBuyBtn.href = `https://wa.me/5511962094589?text=${encodedMessage}`;
+            comboBuyBtn.disabled = false;
             comboBuyBtn.style.opacity = '1';
             comboBuyBtn.style.cursor = 'pointer';
-            comboBuyBtn.onclick = null;
         } else {
-            comboBuyBtn.href = '#';
+            comboBuyBtn.disabled = true;
             comboBuyBtn.style.opacity = '0.6';
             comboBuyBtn.style.cursor = 'not-allowed';
-            comboBuyBtn.onclick = (e) => {
-                e.preventDefault();
-                alert('Selecione pelo menos 3 serviços para habilitar o desconto de combo!');
-            };
         }
     },
     
@@ -217,16 +249,6 @@ const comboBuilder = {
         document.getElementById('final-price').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
     }
 };
-
-// WhatsApp Tracking
-document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
-    link.addEventListener('click', function() {
-        const planName = this.getAttribute('href').includes('text=') ? 
-                        decodeURIComponent(this.getAttribute('href').split('text=')[1]) : 
-                        'Plano Geral';
-        console.log(`WhatsApp clicked for: ${planName}`);
-    });
-});
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {

@@ -450,6 +450,7 @@ header {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+    min-height: 120px;
 }
 
 .service-card-header::before {
@@ -475,12 +476,13 @@ header {
     height: 40px;
     width: auto;
     margin-bottom: 0.5rem;
+    filter: brightness(0) invert(1);
 }
 
 .service-card-header i {
     font-size: 2.5rem;
+    color: white;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .service-card-header h3 {
@@ -588,6 +590,13 @@ header {
     overflow: hidden;
     z-index: 1;
     margin-top: auto;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+.service-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.4);
 }
 
 .service-btn::before {
@@ -601,11 +610,6 @@ header {
     z-index: -1;
     opacity: 0;
     transition: opacity 0.3s ease;
-}
-
-.service-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(108, 92, 231, 0.4);
 }
 
 .service-btn:hover::before {
@@ -708,14 +712,24 @@ header {
     width: 100%;
 }
 
-.combo-service-item i {
+.service-icon {
+    height: 24px;
+    width: auto;
+    filter: brightness(0) invert(1);
+}
+
+.combo-service-item label span:not(.service-price-tag) {
+    flex-grow: 1;
+}
+
+.combo-service-item label i {
     font-size: 1.5rem;
     color: var(--secondary);
     width: 24px;
+    text-align: center;
 }
 
 .service-price-tag {
-    margin-left: auto;
     background: var(--primary);
     color: white;
     padding: 0.25rem 0.75rem;
@@ -733,6 +747,10 @@ header {
 .combo-service-item input[type="checkbox"]:checked + label .service-price-tag {
     background: var(--secondary);
     transform: scale(1.05);
+}
+
+.combo-service-item input[type="checkbox"]:checked + label .service-icon {
+    filter: brightness(0) saturate(100%) invert(67%) sepia(91%) saturate(7498%) hue-rotate(173deg) brightness(103%) contrast(105%);
 }
 
 .combo-actions {
@@ -831,9 +849,11 @@ header {
     font-size: 0.9rem;
 }
 
+.selected-service-name img,
 .selected-service-name i {
+    height: 20px;
+    width: 20px;
     color: var(--secondary);
-    font-size: 1.2rem;
 }
 
 .selected-service-price {
@@ -898,6 +918,7 @@ header {
     padding: 1rem;
     margin-top: auto;
     border: none !important;
+    cursor: pointer;
 }
 
 .combo-buy-btn:hover {
