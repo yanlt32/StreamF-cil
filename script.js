@@ -31,8 +31,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Floating Icons Animation
 const floatingIconsContainer = document.querySelector('.floating-icons');
-const icons = ['fab fa-youtube', 'fab fa-amazon', 'fab fa-apple', 'fas fa-film', 
-               'fas fa-tv', 'fas fa-palette', 'fas fa-trophy'];
+const icons = ['fab fa-youtube', 'fab fa-amazon', 'fab fa-netflix', 'fab fa-hulu', 
+               'fab fa-deezer', 'fas fa-film', 'fas fa-tv', 'fas fa-palette'];
 
 for (let i = 0; i < 10; i++) {
     const icon = document.createElement('i');
@@ -67,6 +67,132 @@ document.querySelectorAll('.animate-float').forEach(el => {
 window.addEventListener('scroll', animateOnScroll);
 window.addEventListener('load', animateOnScroll);
 
+// Combo Builder Functionality
+const comboBuilder = {
+    services: {
+        netflix: { name: 'Netflix 4K Ultra HD', price: 7.59, icon: 'fab fa-netflix' },
+        prime: { name: 'Prime Video', price: 2.49, icon: 'fab fa-amazon' },
+        hulu: { name: 'Hulu', price: 2.00, icon: 'fab fa-hulu' },
+        espn: { name: 'ESPN', price: 2.00, icon: 'fas fa-trophy' },
+        youtube: { name: 'YouTube Premium', price: 2.00, icon: 'fab fa-youtube' },
+        paramount: { name: 'Paramount+', price: 2.00, icon: 'fas fa-film' },
+        viki: { name: 'Viki', price: 2.00, icon: 'fas fa-tv' },
+        deezer: { name: 'Deezer Premium', price: 2.99, icon: 'fab fa-deezer' },
+        canva: { name: 'Canva Pro', price: 2.49, icon: 'fas fa-palette' },
+        crunchyroll: { name: 'Crunchyroll Mega Fan', price: 2.00, icon: 'fas fa-tv' }
+    },
+    
+    selectedServices: [],
+    
+    init() {
+        this.setupEventListeners();
+        this.updateSummary();
+    },
+    
+    setupEventListeners() {
+        // Checkbox listeners
+        document.querySelectorAll('.combo-service-item input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                const serviceId = e.target.closest('.combo-service-item').dataset.service;
+                this.toggleService(serviceId, e.target.checked);
+            });
+        });
+        
+        // Select All button
+        document.getElementById('select-all')?.addEventListener('click', () => {
+            document.querySelectorAll('.combo-service-item input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = true;
+                const serviceId = checkbox.closest('.combo-service-item').dataset.service;
+                if (!this.selectedServices.includes(serviceId)) {
+                    this.selectedServices.push(serviceId);
+                }
+            });
+            this.updateSummary();
+        });
+        
+        // Clear All button
+        document.getElementById('clear-all')?.addEventListener('click', () => {
+            document.querySelectorAll('.combo-service-item input[type="checkbox"]').forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            this.selectedServices = [];
+            this.updateSummary();
+        });
+    },
+    
+    toggleService(serviceId, isSelected) {
+        if (isSelected && !this.selectedServices.includes(serviceId)) {
+            this.selectedServices.push(serviceId);
+        } else if (!isSelected) {
+            this.selectedServices = this.selectedServices.filter(id => id !== serviceId);
+        }
+        this.updateSummary();
+    },
+    
+    updateSummary() {
+        const selectedServicesContainer = document.getElementById('selected-services');
+        const subtotalElement = document.getElementById('subtotal');
+        const discountElement = document.getElementById('discount');
+        const totalElement = document.getElementById('total');
+        const finalPriceElement = document.getElementById('final-price');
+        const comboBuyBtn = document.getElementById('combo-buy-btn');
+        
+        // Clear current selection
+        selectedServicesContainer.innerHTML = '';
+        
+        if (this.selectedServices.length === 0) {
+            selectedServicesContainer.innerHTML = '<p class="empty-message">Nenhum serviço selecionado ainda</p>';
+            this.updateTotals(0, 0, 0);
+            comboBuyBtn.style.opacity = '0.6';
+            comboBuyBtn.style.cursor = 'not-allowed';
+            comboBuyBtn.onclick = (e) => e.preventDefault();
+            return;
+        }
+        
+        // Add selected services
+        this.selectedServices.forEach(serviceId => {
+            const service = this.services[serviceId];
+            const serviceElement = document.createElement('div');
+            serviceElement.className = 'selected-service-item';
+            serviceElement.innerHTML = `
+                <div class="selected-service-name">
+                    <i class="${service.icon}"></i>
+                    ${service.name}
+                </div>
+                <div class="selected-service-price">
+                    R$ ${service.price.toFixed(2).replace('.', ',')}
+                </div>
+            `;
+            selectedServicesContainer.appendChild(serviceElement);
+        });
+        
+        // Calculate totals
+        const subtotal = this.selectedServices.reduce((sum, serviceId) => {
+            return sum + this.services[serviceId].price;
+        }, 0);
+        
+        const discount = subtotal * 0.10; // 10% discount
+        const total = subtotal - discount;
+        
+        this.updateTotals(subtotal, discount, total);
+        
+        // Update WhatsApp link
+        const serviceNames = this.selectedServices.map(id => this.services[id].name).join(', ');
+        const whatsappMessage = `Olá! Gostaria de comprar o combo com: ${serviceNames}\n\nTotal: R$ ${total.toFixed(2).replace('.', ',')}`;
+        const encodedMessage = encodeURIComponent(whatsappMessage);
+        comboBuyBtn.href = `https://wa.me/5511962094589?text=${encodedMessage}`;
+        comboBuyBtn.style.opacity = '1';
+        comboBuyBtn.style.cursor = 'pointer';
+    },
+    
+    updateTotals(subtotal, discount, total) {
+        document.getElementById('subtotal').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+        document.getElementById('discount').textContent = `- R$ ${discount.toFixed(2).replace('.', ',')}`;
+        document.getElementById('total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        document.getElementById('final-price').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+};
+
 // WhatsApp Tracking
 document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
     link.addEventListener('click', function() {
@@ -77,9 +203,10 @@ document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
     });
 });
 
-// Initialize animations on load
+// Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     animateOnScroll();
+    comboBuilder.init();
     
     // Add WhatsApp button to all service cards if not present
     document.querySelectorAll('.service-card').forEach(card => {
@@ -88,4 +215,4 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.setAttribute('href', 'https://wa.me/5511962094589?text=Olá!%20Quero%20comprar%20um%20plano%20de%20streaming');
         }
     });
-}); 
+});

@@ -11,6 +11,8 @@
     --danger: #FF4757;
     --warning: #FFA502;
     --neon: #00FFC6;
+    --whatsapp: #25D366;
+    --whatsapp-dark: #128C7E;
 }
 
 * {
@@ -32,7 +34,7 @@ body {
 
 /* Header */
 header {
-    background-color: rgba(26, 26, 46, 0.9);
+    background-color: rgba(26, 26, 46, 0.95);
     padding: 1rem 5%;
     position: sticky;
     top: 0;
@@ -295,8 +297,63 @@ header {
     }
 }
 
+/* Important Notice */
+.notice {
+    background: linear-gradient(90deg, #FFA502, #FF6348);
+    padding: 1rem 5%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.notice::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 45%,
+        rgba(255, 255, 255, 0.2) 48%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: shine 3s infinite linear;
+}
+
+.notice-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.notice-content i {
+    font-size: 1.5rem;
+    min-width: 40px;
+}
+
+.notice-text h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+}
+
+.notice-text p {
+    font-size: 0.9rem;
+    opacity: 0.95;
+}
+
 /* Sections */
-.services, #benefits, #how-it-works, #about, #faq, #contact {
+.services, #how-it-works, #information, #about, #faq, #contact {
     padding: 5rem 5%;
     max-width: 1400px;
     margin: 0 auto;
@@ -407,11 +464,6 @@ header {
     );
     transform: rotate(30deg);
     animation: shine 3s infinite linear;
-}
-
-@keyframes shine {
-    0% { transform: translateX(-100%) rotate(30deg); }
-    100% { transform: translateX(100%) rotate(30deg); }
 }
 
 .service-card-header i {
@@ -559,6 +611,264 @@ header {
     color: var(--dark);
 }
 
+/* Combo Builder */
+.combo-builder-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    padding: 2rem;
+    border: 1px solid rgba(108, 92, 231, 0.2);
+}
+
+.combo-selection h3,
+.combo-summary h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--light);
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.combo-selection h3::after,
+.combo-summary h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    border-radius: 2px;
+}
+
+.combo-services-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.combo-service-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.combo-service-item:hover {
+    background: rgba(108, 92, 231, 0.1);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.combo-service-item input[type="checkbox"] {
+    display: none;
+}
+
+.combo-service-item label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    color: var(--light);
+    font-size: 0.95rem;
+}
+
+.combo-service-item i {
+    font-size: 1.5rem;
+    color: var(--secondary);
+    width: 24px;
+}
+
+.service-price-tag {
+    margin-left: auto;
+    background: var(--primary);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.combo-service-item input[type="checkbox"]:checked + label {
+    color: var(--secondary);
+}
+
+.combo-service-item input[type="checkbox"]:checked + label .service-price-tag {
+    background: var(--secondary);
+    transform: scale(1.05);
+}
+
+.combo-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.combo-actions .btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* Combo Summary */
+.combo-summary {
+    background: rgba(26, 26, 46, 0.8);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(108, 92, 231, 0.3);
+}
+
+.summary-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.selected-services {
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    min-height: 150px;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.selected-services .empty-message {
+    color: var(--gray);
+    text-align: center;
+    font-style: italic;
+    padding: 2rem 0;
+    opacity: 0.7;
+}
+
+.selected-service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.selected-service-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin: 0 -0.5rem;
+    border-radius: 0.25rem;
+}
+
+.selected-service-item:last-child {
+    border-bottom: none;
+}
+
+.selected-service-name {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--light);
+    font-size: 0.9rem;
+}
+
+.selected-service-name i {
+    color: var(--secondary);
+    font-size: 1.2rem;
+}
+
+.selected-service-price {
+    color: var(--secondary);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.summary-total {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.total-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    color: var(--gray);
+}
+
+.total-item.total-final {
+    border-top: 2px solid rgba(108, 92, 231, 0.3);
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    color: var(--light);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+#total {
+    color: var(--secondary);
+    font-size: 1.3rem;
+}
+
+.summary-note {
+    background: rgba(0, 206, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid var(--secondary);
+}
+
+.summary-note p {
+    color: var(--secondary);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.combo-buy-btn {
+    background: linear-gradient(90deg, var(--whatsapp), var(--whatsapp-dark)) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+    padding: 1rem;
+    margin-top: auto;
+    border: none !important;
+}
+
+.combo-buy-btn:hover {
+    background: linear-gradient(90deg, var(--whatsapp-dark), var(--whatsapp)) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4) !important;
+}
+
+.combo-buy-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3) !important;
+}
+
+#final-price {
+    font-weight: 800;
+    margin-left: 0.25rem;
+}
+
 /* How It Works Section */
 .steps-container {
     display: grid;
@@ -598,6 +908,7 @@ header {
     justify-content: center;
     font-weight: 700;
     font-size: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .step-icon {
@@ -619,7 +930,7 @@ header {
 
 /* WhatsApp CTA */
 .whatsapp-cta {
-    background: linear-gradient(135deg, #25D366, #128C7E);
+    background: linear-gradient(135deg, var(--whatsapp), var(--whatsapp-dark));
     padding: 3rem 5%;
     margin: 4rem auto;
     border-radius: 1rem;
@@ -630,11 +941,32 @@ header {
     box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
 }
 
+.whatsapp-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0) 45%,
+        rgba(255, 255, 255, 0.2) 48%,
+        rgba(255, 255, 255, 0) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    animation: shine 3s infinite linear;
+}
+
 .whatsapp-content {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 .whatsapp-icon {
@@ -652,16 +984,18 @@ header {
     font-size: 2rem;
     color: white;
     margin-bottom: 0.5rem;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .whatsapp-text p {
     color: rgba(255, 255, 255, 0.9);
     max-width: 600px;
+    font-size: 1.1rem;
 }
 
 .whatsapp-btn {
     background-color: white;
-    color: #25D366;
+    color: var(--whatsapp);
     padding: 1rem 2rem;
     border-radius: 50px;
     font-size: 1.1rem;
@@ -866,8 +1200,9 @@ footer::before {
 
 .footer-col p {
     color: var(--gray);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-size: 0.95rem;
+    line-height: 1.5;
 }
 
 .payment-methods {
@@ -910,6 +1245,13 @@ footer::before {
     z-index: 1;
 }
 
+.copyright small {
+    opacity: 0.7;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    display: block;
+}
+
 /* Animations */
 @keyframes float-up {
     0% { transform: translateY(20px); opacity: 0; }
@@ -926,6 +1268,12 @@ footer::before {
 .delay-4 { animation-delay: 0.8s; }
 
 /* Responsive */
+@media (max-width: 1200px) {
+    .combo-builder-container {
+        max-width: 1000px;
+    }
+}
+
 @media (max-width: 1024px) {
     .hero h1 {
         font-size: 2.5rem;
@@ -937,6 +1285,10 @@ footer::before {
     
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .combo-services-list {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -991,28 +1343,39 @@ footer::before {
         width: 100%;
         justify-content: center;
     }
-
+    
+    .notice-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
     .services-grid {
         grid-template-columns: 1fr;
     }
-
+    
+    .combo-builder-container {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+    
     .steps-container {
         grid-template-columns: 1fr;
     }
-
+    
     .whatsapp-content {
         text-align: center;
     }
-
+    
     .whatsapp-text h3 {
         font-size: 1.5rem;
     }
-
+    
     .whatsapp-btn {
         padding: 0.8rem 1.5rem;
         font-size: 1rem;
     }
-
+    
     .footer-container {
         grid-template-columns: 1fr;
     }
@@ -1034,6 +1397,14 @@ footer::before {
     .section-title h2 {
         font-size: 1.6rem;
     }
+    
+    .notice-text h3 {
+        font-size: 1rem;
+    }
+    
+    .notice-text p {
+        font-size: 0.8rem;
+    }
 
     .service-card-header h3 {
         font-size: 1.3rem;
@@ -1041,6 +1412,32 @@ footer::before {
 
     .service-price {
         font-size: 1.5rem;
+    }
+    
+    .combo-selection h3,
+    .combo-summary h3 {
+        font-size: 1.3rem;
+    }
+    
+    .combo-service-item label {
+        font-size: 0.9rem;
+    }
+    
+    .service-price-tag {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+    }
+    
+    .selected-services {
+        min-height: 120px;
+    }
+    
+    .total-item.total-final {
+        font-size: 1.1rem;
+    }
+    
+    #total {
+        font-size: 1.2rem;
     }
 
     .whatsapp-icon {
