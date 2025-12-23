@@ -32,7 +32,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Floating Icons Animation
 const floatingIconsContainer = document.querySelector('.floating-icons');
 const icons = ['fab fa-youtube', 'fab fa-amazon', 'fab fa-netflix', 'fab fa-hulu', 
-               'fab fa-deezer', 'fas fa-film', 'fas fa-tv', 'fas fa-palette'];
+               'fab fa-deezer', 'fas fa-film', 'fas fa-tv', 'fas fa-palette', 'fas fa-robot'];
 
 for (let i = 0; i < 10; i++) {
     const icon = document.createElement('i');
@@ -70,16 +70,18 @@ window.addEventListener('load', animateOnScroll);
 // Combo Builder Functionality
 const comboBuilder = {
     services: {
-        netflix: { name: 'Netflix 4K Ultra HD', price: 7.59, icon: 'fab fa-netflix' },
-        prime: { name: 'Prime Video', price: 2.49, icon: 'fab fa-amazon' },
-        hulu: { name: 'Hulu', price: 2.00, icon: 'fab fa-hulu' },
-        espn: { name: 'ESPN', price: 2.00, icon: 'fas fa-trophy' },
-        youtube: { name: 'YouTube Premium', price: 2.00, icon: 'fab fa-youtube' },
-        paramount: { name: 'Paramount+', price: 2.00, icon: 'fas fa-film' },
-        viki: { name: 'Viki', price: 2.00, icon: 'fas fa-tv' },
-        deezer: { name: 'Deezer Premium', price: 2.99, icon: 'fab fa-deezer' },
-        canva: { name: 'Canva Pro', price: 2.49, icon: 'fas fa-palette' },
-        crunchyroll: { name: 'Crunchyroll Mega Fan', price: 2.00, icon: 'fas fa-tv' }
+        netflix: { name: 'Netflix 4K Ultra HD', price: 22.90, icon: 'fab fa-netflix' },
+        prime: { name: 'Prime Video', price: 8.90, icon: 'fab fa-amazon' },
+        hulu: { name: 'Hulu', price: 12.90, icon: 'fab fa-hulu' },
+        espn: { name: 'ESPN', price: 9.90, icon: 'fas fa-trophy' },
+        youtube: { name: 'YouTube Premium', price: 14.90, icon: 'fab fa-youtube' },
+        paramount: { name: 'Paramount+', price: 10.90, icon: 'fas fa-film' },
+        viki: { name: 'Viki', price: 7.90, icon: 'fas fa-tv' },
+        deezer: { name: 'Deezer Premium', price: 11.90, icon: 'fab fa-deezer' },
+        canva: { name: 'Canva Pro', price: 15.90, icon: 'fas fa-palette' },
+        crunchyroll: { name: 'Crunchyroll Mega Fan', price: 9.90, icon: 'fas fa-tv' },
+        chatgpt: { name: 'ChatGPT Plus', price: 29.90, icon: 'fas fa-robot' },
+        disney: { name: 'Disney+ Premium', price: 19.90, icon: 'fas fa-crown' }
     },
     
     selectedServices: [],
@@ -129,11 +131,19 @@ const comboBuilder = {
         this.updateSummary();
     },
     
+    calculateDiscount(quantity) {
+        if (quantity >= 5) return 0.20; // 20% OFF
+        if (quantity >= 4) return 0.15; // 15% OFF
+        if (quantity >= 3) return 0.10; // 10% OFF
+        return 0; // No discount
+    },
+    
     updateSummary() {
         const selectedServicesContainer = document.getElementById('selected-services');
         const subtotalElement = document.getElementById('subtotal');
         const discountElement = document.getElementById('discount');
         const totalElement = document.getElementById('total');
+        const discountPercentageElement = document.getElementById('discount-percentage');
         const finalPriceElement = document.getElementById('final-price');
         const comboBuyBtn = document.getElementById('combo-buy-btn');
         
@@ -142,9 +152,10 @@ const comboBuilder = {
         
         if (this.selectedServices.length === 0) {
             selectedServicesContainer.innerHTML = '<p class="empty-message">Nenhum serviço selecionado ainda</p>';
-            this.updateTotals(0, 0, 0);
+            this.updateTotals(0, 0, 0, '0%');
             comboBuyBtn.style.opacity = '0.6';
             comboBuyBtn.style.cursor = 'not-allowed';
+            comboBuyBtn.href = '#';
             comboBuyBtn.onclick = (e) => e.preventDefault();
             return;
         }
@@ -171,24 +182,38 @@ const comboBuilder = {
             return sum + this.services[serviceId].price;
         }, 0);
         
-        const discount = subtotal * 0.10; // 10% discount
+        const discountPercentage = this.calculateDiscount(this.selectedServices.length);
+        const discount = subtotal * discountPercentage;
         const total = subtotal - discount;
+        const discountText = `${(discountPercentage * 100).toFixed(0)}%`;
         
-        this.updateTotals(subtotal, discount, total);
+        this.updateTotals(subtotal, discount, total, discountText);
         
         // Update WhatsApp link
-        const serviceNames = this.selectedServices.map(id => this.services[id].name).join(', ');
-        const whatsappMessage = `Olá! Gostaria de comprar o combo com: ${serviceNames}\n\nTotal: R$ ${total.toFixed(2).replace('.', ',')}`;
-        const encodedMessage = encodeURIComponent(whatsappMessage);
-        comboBuyBtn.href = `https://wa.me/5511962094589?text=${encodedMessage}`;
-        comboBuyBtn.style.opacity = '1';
-        comboBuyBtn.style.cursor = 'pointer';
+        if (this.selectedServices.length >= 3) {
+            const serviceNames = this.selectedServices.map(id => this.services[id].name).join('\n• ');
+            const whatsappMessage = `Olá StreamFácil! Gostaria de comprar o seguinte combo:\n\n• ${serviceNames}\n\nQuantidade de serviços: ${this.selectedServices.length}\nSubtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\nDesconto aplicado: ${discountText}\nValor total: R$ ${total.toFixed(2).replace('.', ',')}\n\nPor favor, me envie as informações para pagamento via PIX.`;
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            comboBuyBtn.href = `https://wa.me/5511962094589?text=${encodedMessage}`;
+            comboBuyBtn.style.opacity = '1';
+            comboBuyBtn.style.cursor = 'pointer';
+            comboBuyBtn.onclick = null;
+        } else {
+            comboBuyBtn.href = '#';
+            comboBuyBtn.style.opacity = '0.6';
+            comboBuyBtn.style.cursor = 'not-allowed';
+            comboBuyBtn.onclick = (e) => {
+                e.preventDefault();
+                alert('Selecione pelo menos 3 serviços para habilitar o desconto de combo!');
+            };
+        }
     },
     
-    updateTotals(subtotal, discount, total) {
+    updateTotals(subtotal, discount, total, discountPercentage) {
         document.getElementById('subtotal').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
         document.getElementById('discount').textContent = `- R$ ${discount.toFixed(2).replace('.', ',')}`;
         document.getElementById('total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
+        document.getElementById('discount-percentage').textContent = discountPercentage;
         document.getElementById('final-price').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
     }
 };
@@ -207,12 +232,4 @@ document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
 document.addEventListener('DOMContentLoaded', () => {
     animateOnScroll();
     comboBuilder.init();
-    
-    // Add WhatsApp button to all service cards if not present
-    document.querySelectorAll('.service-card').forEach(card => {
-        const btn = card.querySelector('.service-btn');
-        if (btn && !btn.getAttribute('href').includes('whatsapp')) {
-            btn.setAttribute('href', 'https://wa.me/5511962094589?text=Olá!%20Quero%20comprar%20um%20plano%20de%20streaming');
-        }
-    });
 });
