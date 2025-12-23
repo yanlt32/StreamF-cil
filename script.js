@@ -70,17 +70,19 @@ window.addEventListener('load', animateOnScroll);
 // Combo Builder Functionality
 const comboBuilder = {
     services: {
-        netflix: { name: 'Netflix 4K Ultra HD', price: 22.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg' },
+        netflix: { name: 'Netflix 4K Ultra HD', price: 13.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg' },
+        startplus: { name: 'Start+', price: 9.90, icon: 'fas fa-star' },
+        playplus: { name: 'PlayPlus', price: 11.90, icon: 'fas fa-play' },
         prime: { name: 'Prime Video', price: 8.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg' },
         hulu: { name: 'Hulu', price: 12.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/03/Hulu_logo_%282014%29.svg' },
         espn: { name: 'ESPN', price: 9.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/ESPN_wordmark.svg' },
         youtube: { name: 'YouTube Premium', price: 14.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg' },
-        paramount: { name: 'Paramount+', price: 10.90, icon: 'fas fa-film' },
+        paramount: { name: 'Paramount+', price: 10.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/a/a5/Paramount%2B.svg' },
         viki: { name: 'Viki', price: 7.90, icon: 'fas fa-globe-asia' },
         deezer: { name: 'Deezer Premium', price: 11.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/3/39/Deezer_logo.svg' },
         canva: { name: 'Canva Pro', price: 15.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Canva_icon_2021.svg' },
         crunchyroll: { name: 'Crunchyroll Mega Fan', price: 9.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png' },
-        chatgpt: { name: 'ChatGPT Plus', price: 29.90, icon: 'fas fa-robot' },
+        chatgpt: { name: 'ChatGPT Plus', price: 15.90, icon: 'fas fa-robot' },
         disney: { name: 'Disney+ Premium', price: 19.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg' },
         hbo: { name: 'HBO Max', price: 16.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg' },
         apple: { name: 'Apple TV+', price: 13.90, icon: 'fab fa-apple' }
