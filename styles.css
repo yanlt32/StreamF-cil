@@ -51,8 +51,9 @@ header {
     justify-content: space-between;
     max-width: 1400px;
     margin: 0 auto;
-    height: 70px;
+    height: 70px;          /* altura normal */
 }
+
 
 .logo {
     display: flex;
@@ -61,9 +62,19 @@ header {
 }
 
 .logo-img {
-    height: 60px;
+    height: 400px;         /* logo grande */
     width: auto;
-    max-height: 60px;
+}
+
+
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(108, 92, 231, 0.3);
 }
 
 .nav-links {
@@ -1612,12 +1623,29 @@ footer::before {
 }
 
 @media (max-width: 768px) {
+
+    /* ===== HEADER ===== */
     .header-container {
-        flex-wrap: wrap;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        flex-wrap: nowrap; /* NÃO quebra o layout */
+    }
+
+    /* Logo grande SEM afetar hamburger */
+    .logo {
+        transform: scale(1.4);
+        transform-origin: left center;
     }
 
     .logo-img {
-        height: 50px;
+        height: 150px; /* base segura */
+        width: auto;
+    }
+
+    .logo-text {
+        font-size: 1.4rem;
     }
 
     .nav-links {
@@ -1721,12 +1749,28 @@ footer::before {
 }
 
 @media (max-width: 480px) {
+
+    /* ===== HEADER ===== */
     .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 0.4rem 0;
     }
 
+    /* Logo grande sem afetar layout */
+    .logo {
+        transform: scale(1.25);
+        transform-origin: left center;
+    }
+
     .logo-img {
-        height: 40px;
+        height: 150px;
+        width: auto;
+    }
+
+    .logo-text {
+        font-size: 1.3rem;
     }
 
     .hero h1 {
