@@ -20,8 +20,9 @@
             </a>
             <nav class="nav-links">
                 <a href="#home" class="active">Home</a>
+                <a href="#search-stream">Buscar</a>
                 <a href="#all-plans">Planos</a>
-                <a href="#combo-builder">Montar Combo</a>
+                <a href="#combo-builder">Combo</a>
                 <a href="#how-it-works">Como Funciona</a>
                 <a href="#faq">FAQ</a>
                 <a href="#contact">Contato</a>
@@ -44,7 +45,7 @@
         <div class="floating-icons">
             <i class="fab fa-netflix floating-icon" style="top: 10%; left: 5%; font-size: 2rem;"></i>
             <i class="fab fa-amazon floating-icon" style="top: 70%; left: 15%; font-size: 2.2rem;"></i>
-            <i class="fab fa-hulu floating-icon" style="top: 40%; left: 90%; font-size: 1.8rem;"></i>
+            <i class="fab fa-youtube floating-icon" style="top: 40%; left: 90%; font-size: 1.8rem;"></i>
             <i class="fab fa-deezer floating-icon" style="top: 80%; left: 70%; font-size: 1.6rem;"></i>
         </div>
         <div class="hero-content animate-float">
@@ -75,6 +76,27 @@
         </div>
     </section>
 
+    <!-- Search Section -->
+    <section class="services" id="search-stream">
+        <div class="section-title">
+            <h2>Buscar Serviço de Streaming</h2>
+            <p>Encontre rapidamente o plano que você procura</p>
+        </div>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="streamSearch" placeholder="Digite o nome do serviço (Netflix, Disney+, Spotify...)">
+                <button class="search-btn" id="clearSearch">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-results" id="searchResults">
+                <!-- Resultados aparecerão aqui -->
+            </div>
+        </div>
+    </section>
+
     <!-- Todos os Planos Section -->
     <section class="services" id="all-plans">
         <div class="section-title">
@@ -90,8 +112,8 @@
         </div>
         
         <div class="services-grid">
-            <!-- NETFLIX Planos -->
-            <div class="service-card animate-float delay-1" data-category="mensal promocao">
+            <!-- NETFLIX Planos - Agrupados -->
+            <div class="service-card animate-float delay-1" data-category="mensal promocao" data-service="Netflix">
                 <div class="service-card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="service-logo">
                     <span class="badge badge-promo">Promoção</span>
@@ -113,7 +135,7 @@
                 </div>
             </div>
 
-            <div class="service-card animate-float delay-2" data-category="mensal">
+            <div class="service-card animate-float delay-2" data-category="mensal" data-service="Netflix">
                 <div class="service-card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="service-logo">
                 </div>
@@ -134,7 +156,7 @@
                 </div>
             </div>
 
-            <div class="service-card animate-float delay-3" data-category="anual">
+            <div class="service-card animate-float delay-3" data-category="anual" data-service="Netflix">
                 <div class="service-card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="service-logo">
                     <span class="badge badge-new">Melhor Oferta</span>
@@ -145,7 +167,7 @@
                         <span>/anual (pagamento único)</span>
                     </div>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Tela Netflix 4K</li>
+                        <li><i class="fas fa-check"></i> Netflix 4K</li>
                         <li><i class="fas fa-check"></i> 12 meses de acesso</li>
                         <li><i class="fas fa-check"></i> Economia de 58%</li>
                         <li><i class="fas fa-check"></i> Sem renovação</li>
@@ -157,7 +179,7 @@
             </div>
 
             <!-- DISNEY+ Planos -->
-            <div class="service-card animate-float delay-4" data-category="mensal">
+            <div class="service-card animate-float delay-4" data-category="mensal" data-service="Disney">
                 <div class="service-card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" class="service-logo">
                 </div>
@@ -167,7 +189,7 @@
                         <span>/mês</span>
                     </div>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Tela Disney Premium</li>
+                        <li><i class="fas fa-check"></i> Disney+ Premium</li>
                         <li><i class="fas fa-check"></i> 1 mês de acesso</li>
                         <li><i class="fas fa-check"></i> Conteúdo exclusivo</li>
                         <li><i class="fas fa-check"></i> 4K Ultra HD</li>
@@ -179,7 +201,7 @@
             </div>
 
             <!-- HBO MAX Planos -->
-            <div class="service-card animate-float delay-1" data-category="mensal promocao">
+            <div class="service-card animate-float delay-1" data-category="mensal promocao" data-service="HBO">
                 <div class="service-card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg" alt="HBO Max" class="service-logo">
                     <span class="badge badge-promo">Promoção</span>
@@ -190,7 +212,7 @@
                         <span>/mês</span>
                     </div>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Tela HBO MAX</li>
+                        <li><i class="fas fa-check"></i> HBO MAX</li>
                         <li><i class="fas fa-check"></i> 1 mês de acesso</li>
                         <li><i class="fas fa-check"></i> Séries exclusivas HBO</li>
                         <li><i class="fas fa-check"></i> Filmes Warner Bros</li>
@@ -202,7 +224,7 @@
             </div>
 
             <!-- YOUTUBE PREMIUM Planos -->
-            <div class="service-card animate-float delay-2" data-category="anual">
+            <div class="service-card animate-float delay-2" data-category="anual" data-service="YouTube">
                 <div class="service-card-header">
                     <img src="logo/you.png" alt="YouTube Premium" class="service-logo">
                     <span class="badge badge-new">Melhor Oferta</span>
@@ -213,7 +235,7 @@
                         <span>/anual</span>
                     </div>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> YouTube Premium Anual</li>
+                        <li><i class="fas fa-check"></i> YouTube Premium</li>
                         <li><i class="fas fa-check"></i> 12 meses de acesso</li>
                         <li><i class="fas fa-check"></i> Sem anúncios</li>
                         <li><i class="fas fa-check"></i> YouTube Music Premium</li>
@@ -225,7 +247,7 @@
             </div>
 
             <!-- PRIME VIDEO Planos -->
-            <div class="service-card animate-float delay-3" data-category="anual">
+            <div class="service-card animate-float delay-3" data-category="anual" data-service="Prime">
                 <div class="service-card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg" alt="Prime Video" class="service-logo">
                     <span class="badge badge-new">Economia</span>
@@ -236,7 +258,7 @@
                         <span>/anual</span>
                     </div>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Tela Prime Video Premium</li>
+                        <li><i class="fas fa-check"></i> Prime Video Premium</li>
                         <li><i class="fas fa-check"></i> 12 meses de acesso</li>
                         <li><i class="fas fa-check"></i> Conteúdo exclusivo</li>
                         <li><i class="fas fa-check"></i> Full HD + 4K</li>
@@ -248,7 +270,7 @@
             </div>
 
             <!-- SPOTIFY Planos -->
-            <div class="service-card animate-float delay-4" data-category="mensal">
+            <div class="service-card animate-float delay-4" data-category="mensal" data-service="Spotify">
                 <div class="service-card-header">
                     <i class="fab fa-spotify" style="font-size: 2.5rem;"></i>
                     <h3>Spotify Premium</h3>
@@ -270,32 +292,8 @@
                 </div>
             </div>
 
-            <!-- GAME PASS Planos -->
-            <div class="service-card animate-float delay-1" data-category="promocao">
-                <div class="service-card-header">
-                    <i class="fas fa-gamepad" style="font-size: 2.5rem;"></i>
-                    <h3>Game Pass Ultimate</h3>
-                    <span class="badge badge-promo">Promoção</span>
-                </div>
-                <div class="service-card-body">
-                    <div class="service-price">
-                        R$ 69,90
-                        <span>/mês</span>
-                    </div>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Jogos day one</li>
-                        <li><i class="fas fa-check"></i> EA Play incluso</li>
-                        <li><i class="fas fa-check"></i> Multiplataforma</li>
-                        <li><i class="fas fa-check"></i> Cloud gaming</li>
-                    </ul>
-                    <button class="service-btn open-modal" data-service="Game Pass Ultimate">
-                        Ver Planos <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-            </div>
-
             <!-- CANVA PRO Planos -->
-            <div class="service-card animate-float delay-2" data-category="anual">
+            <div class="service-card animate-float delay-1" data-category="anual" data-service="Canva">
                 <div class="service-card-header">
                     <img src="logo/canva.png" alt="Canva Pro" class="service-logo" style="filter: brightness(0) invert(1);">
                     <span class="badge badge-new">Economia 60%</span>
@@ -318,7 +316,7 @@
             </div>
 
             <!-- PARAMOUNT+ Planos -->
-            <div class="service-card animate-float delay-3" data-category="mensal">
+            <div class="service-card animate-float delay-2" data-category="mensal" data-service="Paramount">
                 <div class="service-card-header">
                     <img src="logo/para.png" alt="Paramount+" class="service-logo">
                     <h3>Paramount+</h3>
@@ -329,7 +327,7 @@
                         <span>/mês</span>
                     </div>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Tela Paramount Plus</li>
+                        <li><i class="fas fa-check"></i> Paramount Plus</li>
                         <li><i class="fas fa-check"></i> Catálogo completo</li>
                         <li><i class="fas fa-check"></i> Séries exclusivas</li>
                         <li><i class="fas fa-check"></i> Filmes Paramount</li>
@@ -340,8 +338,32 @@
                 </div>
             </div>
 
+            <!-- GAME PASS Planos -->
+            <div class="service-card animate-float delay-3" data-category="promocao" data-service="Game">
+                <div class="service-card-header">
+                    <i class="fas fa-gamepad" style="font-size: 2.5rem;"></i>
+                    <h3>Game Pass Ultimate</h3>
+                    <span class="badge badge-promo">Promoção</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 69,90
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Jogos day one</li>
+                        <li><i class="fas fa-check"></i> EA Play incluso</li>
+                        <li><i class="fas fa-check"></i> Multiplataforma</li>
+                        <li><i class="fas fa-check"></i> Cloud gaming</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Game Pass Ultimate">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
             <!-- CRUNCHYROLL Planos -->
-            <div class="service-card animate-float delay-4" data-category="mensal">
+            <div class="service-card animate-float delay-4" data-category="mensal" data-service="Crunchyroll">
                 <div class="service-card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png" alt="Crunchyroll" class="service-logo">
                     <h3>Crunchyroll</h3>
@@ -364,7 +386,7 @@
             </div>
 
             <!-- DEEZER Planos -->
-            <div class="service-card animate-float delay-1" data-category="mensal">
+            <div class="service-card animate-float delay-1" data-category="mensal" data-service="Deezer">
                 <div class="service-card-header">
                     <img src="logo/dee.png" alt="Deezer Premium" class="service-logo">
                     <h3>Deezer Premium</h3>
@@ -387,7 +409,7 @@
             </div>
 
             <!-- GLOBOPLAY Planos -->
-            <div class="service-card animate-float delay-2" data-category="mensal">
+            <div class="service-card animate-float delay-2" data-category="mensal" data-service="Globoplay">
                 <div class="service-card-header">
                     <i class="fas fa-globe-americas" style="font-size: 2.5rem;"></i>
                     <h3>Globoplay</h3>
@@ -410,7 +432,7 @@
             </div>
 
             <!-- UFC FIGHT PASS -->
-            <div class="service-card animate-float delay-3" data-category="mensal">
+            <div class="service-card animate-float delay-3" data-category="mensal" data-service="UFC">
                 <div class="service-card-header">
                     <i class="fas fa-fist-raised" style="font-size: 2.5rem;"></i>
                     <h3>UFC Fight Pass</h3>
@@ -433,7 +455,7 @@
             </div>
 
             <!-- PREMIERE PLAY -->
-            <div class="service-card animate-float delay-4" data-category="mensal">
+            <div class="service-card animate-float delay-4" data-category="mensal" data-service="Premiere">
                 <div class="service-card-header">
                     <i class="fas fa-futbol" style="font-size: 2.5rem;"></i>
                     <h3>Premiere Play</h3>
@@ -456,7 +478,7 @@
             </div>
 
             <!-- TELECINE PLAY -->
-            <div class="service-card animate-float delay-1" data-category="mensal">
+            <div class="service-card animate-float delay-1" data-category="mensal" data-service="Telecine">
                 <div class="service-card-header">
                     <i class="fas fa-film" style="font-size: 2.5rem;"></i>
                     <h3>Telecine Play</h3>
@@ -479,7 +501,7 @@
             </div>
 
             <!-- PSN PLUS DELUXE -->
-            <div class="service-card animate-float delay-2" data-category="mensal">
+            <div class="service-card animate-float delay-2" data-category="mensal" data-service="PSN">
                 <div class="service-card-header">
                     <i class="fab fa-playstation" style="font-size: 2.5rem;"></i>
                     <h3>PSN Plus Deluxe</h3>
@@ -502,7 +524,7 @@
             </div>
 
             <!-- STAR+ -->
-            <div class="service-card animate-float delay-3" data-category="mensal">
+            <div class="service-card animate-float delay-3" data-category="mensal" data-service="Star">
                 <div class="service-card-header">
                     <img src="logo/start.png" alt="Star+" class="service-logo">
                     <h3>Star+</h3>
@@ -525,7 +547,7 @@
             </div>
 
             <!-- PLAYPLUS -->
-            <div class="service-card animate-float delay-4" data-category="mensal">
+            <div class="service-card animate-float delay-4" data-category="mensal" data-service="Playplus">
                 <div class="service-card-header">
                     <img src="logo/play.png" alt="PlayPlus" class="service-logo">
                     <h3>PlayPlus</h3>
@@ -548,7 +570,7 @@
             </div>
 
             <!-- HULU -->
-            <div class="service-card animate-float delay-1" data-category="mensal">
+            <div class="service-card animate-float delay-1" data-category="mensal" data-service="Hulu">
                 <div class="service-card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Hulu_logo_%282014%29.svg" alt="Hulu" class="service-logo">
                     <h3>Hulu</h3>
@@ -571,7 +593,7 @@
             </div>
 
             <!-- ESPN -->
-            <div class="service-card animate-float delay-2" data-category="mensal">
+            <div class="service-card animate-float delay-2" data-category="mensal" data-service="ESPN">
                 <div class="service-card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/ESPN_wordmark.svg" alt="ESPN" class="service-logo">
                     <h3>ESPN</h3>
@@ -594,7 +616,7 @@
             </div>
 
             <!-- TNT SPORTS -->
-            <div class="service-card animate-float delay-3" data-category="mensal">
+            <div class="service-card animate-float delay-3" data-category="mensal" data-service="TNT">
                 <div class="service-card-header">
                     <img src="logo/tnt.png" alt="TNT Sports" class="service-logo">
                     <h3>TNT Sports</h3>
@@ -617,7 +639,7 @@
             </div>
 
             <!-- APPLE TV+ -->
-            <div class="service-card animate-float delay-4" data-category="mensal">
+            <div class="service-card animate-float delay-4" data-category="mensal" data-service="Apple">
                 <div class="service-card-header">
                     <i class="fab fa-apple" style="font-size: 2.5rem;"></i>
                     <h3>Apple TV+</h3>
@@ -640,7 +662,7 @@
             </div>
 
             <!-- VIKI -->
-            <div class="service-card animate-float delay-1" data-category="mensal">
+            <div class="service-card animate-float delay-1" data-category="mensal" data-service="Viki">
                 <div class="service-card-header">
                     <i class="fas fa-globe-asia" style="font-size: 2.5rem;"></i>
                     <h3>Viki</h3>
@@ -663,7 +685,7 @@
             </div>
 
             <!-- CHATGPT PLUS -->
-            <div class="service-card animate-float delay-2" data-category="mensal">
+            <div class="service-card animate-float delay-2" data-category="mensal" data-service="ChatGPT">
                 <div class="service-card-header">
                     <i class="fas fa-robot" style="font-size: 2.5rem;"></i>
                     <h3>ChatGPT Plus</h3>
@@ -705,6 +727,16 @@
                             <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="service-icon">
                             <span>Netflix 4K</span>
                             <span class="service-price-tag">R$ 29,90</span>
+                        </label>
+                    </div>
+                    
+                    <!-- NETFLIX PROMO -->
+                    <div class="combo-service-item" data-service="netflix-promo" data-price="15.90">
+                        <input type="checkbox" id="service-netflix-promo">
+                        <label for="service-netflix-promo">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="service-icon">
+                            <span>Netflix Premium</span>
+                            <span class="service-price-tag">R$ 15,90</span>
                         </label>
                     </div>
                     
@@ -927,6 +959,16 @@
                             <span class="service-price-tag">R$ 69,90</span>
                         </label>
                     </div>
+                    
+                    <!-- CHATGPT PLUS -->
+                    <div class="combo-service-item" data-service="chatgpt" data-price="40.00">
+                        <input type="checkbox" id="service-chatgpt">
+                        <label for="service-chatgpt">
+                            <i class="fas fa-robot" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                            <span>ChatGPT Plus</span>
+                            <span class="service-price-tag">US$ 8,00</span>
+                        </label>
+                    </div>
                 </div>
                 
                 <div class="combo-actions">
@@ -1080,7 +1122,7 @@
                     <h3>Como recebo o login?</h3>
                 </div>
                 <div class="service-card-body">
-                    <p><strong>Login enviado na hora!</strong> Após confirmar o pagamento, você recebe o código completo e separado diretamente no WhatsApp.</p>
+                    <p>Login enviado na hora! Após confirmar o pagamento, você recebe o código completo e separado diretamente no WhatsApp.</p>
                 </div>
             </div>
             <div class="service-card animate-float delay-2">
@@ -1140,7 +1182,7 @@
                     <h3>WhatsApp</h3>
                 </div>
                 <div class="service-card-body">
-                    <p><strong>(11) 96209-4589</strong></p>
+                    <p>(11) 96209-4589</p>
                     <p>Atendimento rápido e direto. Clique abaixo para iniciar uma conversa!</p>
                     <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20tirar%20uma%20dúvida%20sobre%20os%20serviços%20de%20streaming." class="service-btn" target="_blank">
                         <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
@@ -1153,7 +1195,7 @@
                     <h3>Informações Importantes</h3>
                 </div>
                 <div class="service-card-body">
-                    <p><strong>EASYSTREAM - Sua melhor opção em streaming!</strong></p>
+                    <p>EASYSTREAM - Sua melhor opção em streaming!</p>
                     <p>• Login enviado na hora após pagamento</p>
                     <p>• Código completo e separado</p>
                     <p>• Suporte via WhatsApp 24/7</p>
@@ -1197,16 +1239,16 @@
             </div>
             <div class="footer-col">
                 <h4>Informações</h4>
-                <p><strong>WhatsApp:</strong> (11) 96209-4589</p>
-                <p><strong>Entrega:</strong> Login na hora</p>
-                <p><strong>Formato:</strong> Código completo e separado</p>
-                <p><strong>Contas:</strong> Compartilhadas - Respeite!</p>
-                <p><strong>Garantia:</strong> 100% satisfação</p>
+                <p>WhatsApp: (11) 96209-4589</p>
+                <p>Entrega: Login na hora</p>
+                <p>Formato: Código completo e separado</p>
+                <p>Contas: Compartilhadas - Respeite!</p>
+                <p>Garantia: 100% satisfação</p>
             </div>
         </div>
         <div class="copyright">
             <p>© 2024 EASYSTREAM. Todos os direitos reservados.</p>
-            <p><small>Todas as marcas são propriedade de seus respectivos donos. Serviço de revenda autorizada.</small></p>
+            <p>Todas as marcas são propriedade de seus respectivos donos. Serviço de revenda autorizada.</p>
         </div>
     </footer>
 
@@ -1234,285 +1276,6 @@
         </div>
     </div>
 
-    <script src="plans-modal.js"></script>
-    <script>
-        // Hamburger Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.querySelector('.nav-links');
-
-        if (hamburger && navLinks) {
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navLinks.classList.toggle('active');
-            });
-
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                });
-            });
-        }
-
-        // Smooth Scrolling for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Floating Icons Animation
-        const floatingIconsContainer = document.querySelector('.floating-icons');
-        const icons = ['fab fa-youtube', 'fab fa-amazon', 'fab fa-netflix', 'fab fa-hulu', 
-                       'fab fa-deezer', 'fas fa-film', 'fas fa-tv', 'fas fa-palette', 'fas fa-robot'];
-
-        for (let i = 0; i < 10; i++) {
-            const icon = document.createElement('i');
-            icon.className = icons[Math.floor(Math.random() * icons.length)] + ' floating-icon';
-            icon.style.top = `${Math.random() * 100}%`;
-            icon.style.left = `${Math.random() * 100}%`;
-            icon.style.fontSize = `${Math.random() * 1 + 1.5}rem`;
-            icon.style.animationDuration = `${Math.random() * 10 + 10}s`;
-            icon.style.animationDelay = `${Math.random() * 5}s`;
-            if (floatingIconsContainer) {
-                floatingIconsContainer.appendChild(icon);
-            }
-        }
-
-        // Scroll Animations
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.animate-float');
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                if (elementPosition < screenPosition) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
-
-        document.querySelectorAll('.animate-float').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        });
-
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-
-        // Combo Builder Functionality
-        const comboBuilder = {
-            services: {
-                netflix: { name: 'Netflix 4K', price: 29.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg' },
-                startplus: { name: 'Star+', price: 16.36, icon: 'logo/start.png' },
-                playplus: { name: 'PlayPlus', price: 7.56, icon: 'logo/play.png' },
-                prime: { name: 'Prime Video', price: 14.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg' },
-                hulu: { name: 'Hulu', price: 26.76, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/03/Hulu_logo_%282014%29.svg' },
-                espn: { name: 'ESPN', price: 26.76, icon: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/ESPN_wordmark.svg' },
-                tntsports: { name: 'TNT Sports', price: 17.96, icon: 'logo/tnt.png' },
-                youtube: { name: 'YouTube Premium', price: 18.90, icon: 'logo/you.png' },
-                disney: { name: 'Disney+', price: 19.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg' },
-                hbo: { name: 'HBO Max', price: 19.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg' },
-                paramount: { name: 'Paramount+', price: 14.90, icon: 'logo/para.png' },
-                crunchyroll: { name: 'Crunchyroll', price: 12.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png' },
-                spotify: { name: 'Spotify Premium', price: 14.90, icon: 'fab fa-spotify' },
-                deezer: { name: 'Deezer Premium', price: 14.90, icon: 'logo/dee.png' },
-                canva: { name: 'Canva Pro', price: 24.90, icon: 'logo/canva.png' },
-                viki: { name: 'Viki', price: 10.40, icon: 'fas fa-globe-asia' },
-                apple: { name: 'Apple TV+', price: 11.96, icon: 'fab fa-apple' },
-                globoplay: { name: 'Globoplay', price: 17.90, icon: 'fas fa-globe-americas' },
-                ufc: { name: 'UFC Fight Pass', price: 19.90, icon: 'fas fa-fist-raised' },
-                premiere: { name: 'Premiere Play', price: 29.90, icon: 'fas fa-futbol' },
-                telecine: { name: 'Telecine Play', price: 22.90, icon: 'fas fa-film' },
-                psn: { name: 'PSN Plus Deluxe', price: 49.90, icon: 'fab fa-playstation' },
-                gamepass: { name: 'Game Pass Ultimate', price: 69.90, icon: 'fas fa-gamepad' }
-            },
-            
-            selectedServices: [],
-            
-            init() {
-                this.setupEventListeners();
-                this.updateSummary();
-            },
-            
-            setupEventListeners() {
-                // Checkbox listeners
-                document.querySelectorAll('.combo-service-item input[type="checkbox"]').forEach(checkbox => {
-                    checkbox.addEventListener('change', (e) => {
-                        const serviceId = e.target.closest('.combo-service-item').dataset.service;
-                        this.toggleService(serviceId, e.target.checked);
-                    });
-                });
-                
-                // Select All button
-                document.getElementById('select-all')?.addEventListener('click', () => {
-                    document.querySelectorAll('.combo-service-item input[type="checkbox"]').forEach(checkbox => {
-                        checkbox.checked = true;
-                        const serviceId = checkbox.closest('.combo-service-item').dataset.service;
-                        if (!this.selectedServices.includes(serviceId)) {
-                            this.selectedServices.push(serviceId);
-                        }
-                    });
-                    this.updateSummary();
-                });
-                
-                // Clear All button
-                document.getElementById('clear-all')?.addEventListener('click', () => {
-                    document.querySelectorAll('.combo-service-item input[type="checkbox"]').forEach(checkbox => {
-                        checkbox.checked = false;
-                    });
-                    this.selectedServices = [];
-                    this.updateSummary();
-                });
-                
-                // Combo Buy Button
-                document.getElementById('combo-buy-btn')?.addEventListener('click', (e) => {
-                    this.handleComboPurchase(e);
-                });
-            },
-            
-            toggleService(serviceId, isSelected) {
-                if (isSelected && !this.selectedServices.includes(serviceId)) {
-                    this.selectedServices.push(serviceId);
-                } else if (!isSelected) {
-                    this.selectedServices = this.selectedServices.filter(id => id !== serviceId);
-                }
-                this.updateSummary();
-            },
-            
-            calculateDiscount(quantity) {
-                if (quantity >= 5) return 0.20; // 20% OFF
-                if (quantity >= 4) return 0.15; // 15% OFF
-                if (quantity >= 3) return 0.10; // 10% OFF
-                return 0; // No discount
-            },
-            
-            handleComboPurchase(e) {
-                if (this.selectedServices.length < 3) {
-                    e.preventDefault();
-                    alert('Selecione pelo menos 3 serviços para habilitar o desconto de combo!');
-                    return;
-                }
-                
-                // Calculate totals
-                const subtotal = this.selectedServices.reduce((sum, serviceId) => {
-                    return sum + this.services[serviceId].price;
-                }, 0);
-                
-                const discountPercentage = this.calculateDiscount(this.selectedServices.length);
-                const discount = subtotal * discountPercentage;
-                const total = subtotal - discount;
-                const discountText = `${(discountPercentage * 100).toFixed(0)}%`;
-                
-                // Create WhatsApp message
-                const serviceNames = this.selectedServices.map(id => this.services[id].name).join('\n• ');
-                const whatsappMessage = `Olá EASYSTREAM!\n\nGostaria de comprar o seguinte combo:\n\n• ${serviceNames}\n\n📊 RESUMO DO PEDIDO:\nQuantidade de serviços: ${this.selectedServices.length}\nSubtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\nDesconto aplicado: ${discountText}\nValor total: R$ ${total.toFixed(2).replace('.', ',')}\n\nPor favor, me envie as informações para pagamento via PIX.`;
-                
-                // Open WhatsApp
-                const encodedMessage = encodeURIComponent(whatsappMessage);
-                window.open(`https://wa.me/5511962094589?text=${encodedMessage}`, '_blank');
-            },
-            
-            updateSummary() {
-                const selectedServicesContainer = document.getElementById('selected-services');
-                const comboBuyBtn = document.getElementById('combo-buy-btn');
-                
-                // Clear current selection
-                if (selectedServicesContainer) {
-                    selectedServicesContainer.innerHTML = '';
-                }
-                
-                if (this.selectedServices.length === 0) {
-                    selectedServicesContainer.innerHTML = '<p class="empty-message">Nenhum serviço selecionado ainda</p>';
-                    this.updateTotals(0, 0, 0, '0%');
-                    if (comboBuyBtn) {
-                        comboBuyBtn.disabled = true;
-                        comboBuyBtn.style.opacity = '0.6';
-                        comboBuyBtn.style.cursor = 'not-allowed';
-                    }
-                    return;
-                }
-                
-                // Add selected services
-                this.selectedServices.forEach(serviceId => {
-                    const service = this.services[serviceId];
-                    const serviceElement = document.createElement('div');
-                    serviceElement.className = 'selected-service-item';
-                    
-                    let iconHTML = '';
-                    if (service.icon.startsWith('http')) {
-                        iconHTML = `<img src="${service.icon}" alt="${service.name}" class="service-icon">`;
-                    } else if (service.icon.startsWith('fab') || service.icon.startsWith('fas')) {
-                        iconHTML = `<i class="${service.icon}"></i>`;
-                    } else {
-                        iconHTML = `<img src="${service.icon}" alt="${service.name}" class="service-icon">`;
-                    }
-                    
-                    serviceElement.innerHTML = `
-                        <div class="selected-service-name">
-                            ${iconHTML}
-                            ${service.name}
-                        </div>
-                        <div class="selected-service-price">
-                            R$ ${service.price.toFixed(2).replace('.', ',')}
-                        </div>
-                    `;
-                    selectedServicesContainer.appendChild(serviceElement);
-                });
-                
-                // Calculate totals
-                const subtotal = this.selectedServices.reduce((sum, serviceId) => {
-                    return sum + this.services[serviceId].price;
-                }, 0);
-                
-                const discountPercentage = this.calculateDiscount(this.selectedServices.length);
-                const discount = subtotal * discountPercentage;
-                const total = subtotal - discount;
-                const discountText = `${(discountPercentage * 100).toFixed(0)}%`;
-                
-                this.updateTotals(subtotal, discount, total, discountText);
-                
-                // Update button state
-                if (comboBuyBtn) {
-                    if (this.selectedServices.length >= 3) {
-                        comboBuyBtn.disabled = false;
-                        comboBuyBtn.style.opacity = '1';
-                        comboBuyBtn.style.cursor = 'pointer';
-                    } else {
-                        comboBuyBtn.disabled = true;
-                        comboBuyBtn.style.opacity = '0.6';
-                        comboBuyBtn.style.cursor = 'not-allowed';
-                    }
-                }
-            },
-            
-            updateTotals(subtotal, discount, total, discountPercentage) {
-                const subtotalElement = document.getElementById('subtotal');
-                const discountElement = document.getElementById('discount');
-                const totalElement = document.getElementById('total');
-                const discountPercentageElement = document.getElementById('discount-percentage');
-                const finalPriceElement = document.getElementById('final-price');
-                
-                if (subtotalElement) subtotalElement.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
-                if (discountElement) discountElement.textContent = `- R$ ${discount.toFixed(2).replace('.', ',')}`;
-                if (totalElement) totalElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-                if (discountPercentageElement) discountPercentageElement.textContent = discountPercentage;
-                if (finalPriceElement) finalPriceElement.textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
-            }
-        };
-
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            animateOnScroll();
-            comboBuilder.init();
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
