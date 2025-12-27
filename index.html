@@ -6,13 +6,13 @@
     <title>EASYSTREAM - Assinaturas Premium de Streaming</title>
     <link rel="shortcut icon" href="logobg-removebg-preview.png" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="plans-modal.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="google-site-verification" content="sb0fm9jXoWveqMtNLRNbzyYfq0vFurI6-7ccQkr5k9Y" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
-     <!-- Header -->
     <header>
         <div class="header-container">
             <a href="#home" class="logo">
@@ -20,7 +20,7 @@
             </a>
             <nav class="nav-links">
                 <a href="#home" class="active">Home</a>
-                <a href="#services">Serviços</a>
+                <a href="#all-plans">Planos</a>
                 <a href="#combo-builder">Montar Combo</a>
                 <a href="#how-it-works">Como Funciona</a>
                 <a href="#faq">FAQ</a>
@@ -38,6 +38,7 @@
             </div>
         </div>
     </header>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="floating-icons">
@@ -50,8 +51,8 @@
             <h1>Assinaturas Premium de Streaming</h1>
             <p>Acesse os melhores serviços de streaming por preços imbatíveis. Login enviado na hora! Código completo e separado.</p>
             <div class="cta-buttons">
-                <a href="#services" class="btn btn-primary">
-                    <i class="fas fa-play-circle"></i> Ver Planos
+                <a href="#all-plans" class="btn btn-primary">
+                    <i class="fas fa-play-circle"></i> Ver Todos os Planos
                 </a>
                 <a href="#combo-builder" class="btn btn-secondary">
                     <i class="fas fa-cogs"></i> Montar Combo
@@ -74,48 +75,442 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <!-- Todos os Planos Section -->
+    <section class="services" id="all-plans">
         <div class="section-title">
-            <h2>Nossos Serviços de Streaming</h2>
-            <p>Preços imbatíveis com entrega automática! Login enviado na hora.</p>
+            <h2>Todos os Planos Disponíveis</h2>
+            <p>Escolha entre diferentes durações e preços para cada serviço</p>
         </div>
+        
+        <div class="plans-filter">
+            <button class="filter-btn active" data-filter="all">Todos os Planos</button>
+            <button class="filter-btn" data-filter="mensal">Mensais</button>
+            <button class="filter-btn" data-filter="anual">Anuais</button>
+            <button class="filter-btn" data-filter="promocao">Promoções</button>
+        </div>
+        
         <div class="services-grid">
-            <!-- Netflix -->
-            <div class="service-card animate-float delay-1">
+            <!-- NETFLIX Planos -->
+            <div class="service-card animate-float delay-1" data-category="mensal promocao">
                 <div class="service-card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="service-logo">
-                    
-                    <span class="badge badge-popular">Mais Popular</span>
+                    <span class="badge badge-promo">Promoção</span>
                 </div>
                 <div class="service-card-body">
                     <div class="service-price">
-                        R$ 23,96
-                        <span>/30 dias</span>
+                        R$ 15,90
+                        <span>/mês (com anúncios)</span>
                     </div>
                     <ul class="service-features">
-                        <li><i class="fas fa-check"></i> 4K Ultra HD Premium</li>
-                        <li><i class="fas fa-check"></i> 4 telas simultâneas</li>
+                        <li><i class="fas fa-check"></i> Netflix Premium</li>
+                        <li><i class="fas fa-check"></i> 1 mês de acesso</li>
                         <li><i class="fas fa-check"></i> Catálogo completo</li>
-                        <li><i class="fas fa-check"></i> Entrega automática</li>
+                        <li><i class="fas fa-check"></i> Anúncios inclusos</li>
                     </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20NETFLIX%204K%20Ultra%20HD%0A💰%20Valor:%20R$%2023,96%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <button class="service-btn open-modal" data-service="Netflix Premium">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- Start+ -->
-            <div class="service-card animate-float delay-2">
+            <div class="service-card animate-float delay-2" data-category="mensal">
+                <div class="service-card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="service-logo">
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 29,90
+                        <span>/mês (sem anúncios)</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Netflix 4K</li>
+                        <li><i class="fas fa-check"></i> Sem anúncios</li>
+                        <li><i class="fas fa-check"></i> 4 telas simultâneas</li>
+                        <li><i class="fas fa-check"></i> 1 mês de acesso</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Netflix 4K">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="service-card animate-float delay-3" data-category="anual">
+                <div class="service-card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="service-logo">
+                    <span class="badge badge-new">Melhor Oferta</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 119,90
+                        <span>/anual (pagamento único)</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Tela Netflix 4K</li>
+                        <li><i class="fas fa-check"></i> 12 meses de acesso</li>
+                        <li><i class="fas fa-check"></i> Economia de 58%</li>
+                        <li><i class="fas fa-check"></i> Sem renovação</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Netflix 4K Anual">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- DISNEY+ Planos -->
+            <div class="service-card animate-float delay-4" data-category="mensal">
+                <div class="service-card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" class="service-logo">
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 19,90
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Tela Disney Premium</li>
+                        <li><i class="fas fa-check"></i> 1 mês de acesso</li>
+                        <li><i class="fas fa-check"></i> Conteúdo exclusivo</li>
+                        <li><i class="fas fa-check"></i> 4K Ultra HD</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Disney+ Premium">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- HBO MAX Planos -->
+            <div class="service-card animate-float delay-1" data-category="mensal promocao">
+                <div class="service-card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg" alt="HBO Max" class="service-logo">
+                    <span class="badge badge-promo">Promoção</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 19,90
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Tela HBO MAX</li>
+                        <li><i class="fas fa-check"></i> 1 mês de acesso</li>
+                        <li><i class="fas fa-check"></i> Séries exclusivas HBO</li>
+                        <li><i class="fas fa-check"></i> Filmes Warner Bros</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="HBO MAX">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- YOUTUBE PREMIUM Planos -->
+            <div class="service-card animate-float delay-2" data-category="anual">
+                <div class="service-card-header">
+                    <img src="logo/you.png" alt="YouTube Premium" class="service-logo">
+                    <span class="badge badge-new">Melhor Oferta</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 89,90
+                        <span>/anual</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> YouTube Premium Anual</li>
+                        <li><i class="fas fa-check"></i> 12 meses de acesso</li>
+                        <li><i class="fas fa-check"></i> Sem anúncios</li>
+                        <li><i class="fas fa-check"></i> YouTube Music Premium</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="YouTube Premium">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRIME VIDEO Planos -->
+            <div class="service-card animate-float delay-3" data-category="anual">
+                <div class="service-card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg" alt="Prime Video" class="service-logo">
+                    <span class="badge badge-new">Economia</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 69,90
+                        <span>/anual</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Tela Prime Video Premium</li>
+                        <li><i class="fas fa-check"></i> 12 meses de acesso</li>
+                        <li><i class="fas fa-check"></i> Conteúdo exclusivo</li>
+                        <li><i class="fas fa-check"></i> Full HD + 4K</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Prime Video Premium">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SPOTIFY Planos -->
+            <div class="service-card animate-float delay-4" data-category="mensal">
+                <div class="service-card-header">
+                    <i class="fab fa-spotify" style="font-size: 2.5rem;"></i>
+                    <h3>Spotify Premium</h3>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 14,90
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Músicas sem anúncios</li>
+                        <li><i class="fas fa-check"></i> 1 mês de acesso</li>
+                        <li><i class="fas fa-check"></i> Downloads offline</li>
+                        <li><i class="fas fa-check"></i> Qualidade alta</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Spotify Premium">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- GAME PASS Planos -->
+            <div class="service-card animate-float delay-1" data-category="promocao">
+                <div class="service-card-header">
+                    <i class="fas fa-gamepad" style="font-size: 2.5rem;"></i>
+                    <h3>Game Pass Ultimate</h3>
+                    <span class="badge badge-promo">Promoção</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 69,90
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Jogos day one</li>
+                        <li><i class="fas fa-check"></i> EA Play incluso</li>
+                        <li><i class="fas fa-check"></i> Multiplataforma</li>
+                        <li><i class="fas fa-check"></i> Cloud gaming</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Game Pass Ultimate">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CANVA PRO Planos -->
+            <div class="service-card animate-float delay-2" data-category="anual">
+                <div class="service-card-header">
+                    <img src="logo/canva.png" alt="Canva Pro" class="service-logo" style="filter: brightness(0) invert(1);">
+                    <span class="badge badge-new">Economia 60%</span>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 99,90
+                        <span>/anual (pagamento único)</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Canva Pro Anual</li>
+                        <li><i class="fas fa-check"></i> 12 meses de acesso</li>
+                        <li><i class="fas fa-check"></i> 100GB armazenamento</li>
+                        <li><i class="fas fa-check"></i> Todos recursos</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Canva Pro">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PARAMOUNT+ Planos -->
+            <div class="service-card animate-float delay-3" data-category="mensal">
+                <div class="service-card-header">
+                    <img src="logo/para.png" alt="Paramount+" class="service-logo">
+                    <h3>Paramount+</h3>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 14,90
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Tela Paramount Plus</li>
+                        <li><i class="fas fa-check"></i> Catálogo completo</li>
+                        <li><i class="fas fa-check"></i> Séries exclusivas</li>
+                        <li><i class="fas fa-check"></i> Filmes Paramount</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Paramount Plus">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CRUNCHYROLL Planos -->
+            <div class="service-card animate-float delay-4" data-category="mensal">
+                <div class="service-card-header">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png" alt="Crunchyroll" class="service-logo">
+                    <h3>Crunchyroll</h3>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 12,90
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Mega Fan</li>
+                        <li><i class="fas fa-check"></i> Animes simultâneos</li>
+                        <li><i class="fas fa-check"></i> Sem anúncios</li>
+                        <li><i class="fas fa-check"></i> Simulcast</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Crunchyroll">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- DEEZER Planos -->
+            <div class="service-card animate-float delay-1" data-category="mensal">
+                <div class="service-card-header">
+                    <img src="logo/dee.png" alt="Deezer Premium" class="service-logo">
+                    <h3>Deezer Premium</h3>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 14,90
+                        <span>/mês (Individual)</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Individual</li>
+                        <li><i class="fas fa-check"></i> 73 milhões de músicas</li>
+                        <li><i class="fas fa-check"></i> Sem anúncios</li>
+                        <li><i class="fas fa-check"></i> Downloads offline</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Deezer Premium">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- GLOBOPLAY Planos -->
+            <div class="service-card animate-float delay-2" data-category="mensal">
+                <div class="service-card-header">
+                    <i class="fas fa-globe-americas" style="font-size: 2.5rem;"></i>
+                    <h3>Globoplay</h3>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 17,90
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Novelas e séries</li>
+                        <li><i class="fas fa-check"></i> Esportes ao vivo</li>
+                        <li><i class="fas fa-check"></i> Conteúdo Globo</li>
+                        <li><i class="fas fa-check"></i> Jornalismo</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Globoplay">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- UFC FIGHT PASS -->
+            <div class="service-card animate-float delay-3" data-category="mensal">
+                <div class="service-card-header">
+                    <i class="fas fa-fist-raised" style="font-size: 2.5rem;"></i>
+                    <h3>UFC Fight Pass</h3>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 19,90
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Lutas exclusivas</li>
+                        <li><i class="fas fa-check"></i> Eventos ao vivo</li>
+                        <li><i class="fas fa-check"></i> Conteúdo original</li>
+                        <li><i class="fas fa-check"></i> Arquivo completo</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="UFC Fight Pass">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PREMIERE PLAY -->
+            <div class="service-card animate-float delay-4" data-category="mensal">
+                <div class="service-card-header">
+                    <i class="fas fa-futbol" style="font-size: 2.5rem;"></i>
+                    <h3>Premiere Play</h3>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 29,90
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Futebol ao vivo</li>
+                        <li><i class="fas fa-check"></i> Jogos do Brasileirão</li>
+                        <li><i class="fas fa-check"></i> Copa do Brasil</li>
+                        <li><i class="fas fa-check"></i> Estaduais</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Premiere Play">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- TELECINE PLAY -->
+            <div class="service-card animate-float delay-1" data-category="mensal">
+                <div class="service-card-header">
+                    <i class="fas fa-film" style="font-size: 2.5rem;"></i>
+                    <h3>Telecine Play</h3>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 22,90
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Cinema em casa</li>
+                        <li><i class="fas fa-check"></i> Lançamentos</li>
+                        <li><i class="fas fa-check"></i> Catálogo completo</li>
+                        <li><i class="fas fa-check"></i> Canais temáticos</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Telecine Play">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- PSN PLUS DELUXE -->
+            <div class="service-card animate-float delay-2" data-category="mensal">
+                <div class="service-card-header">
+                    <i class="fab fa-playstation" style="font-size: 2.5rem;"></i>
+                    <h3>PSN Plus Deluxe</h3>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 49,90
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Jogos mensais</li>
+                        <li><i class="fas fa-check"></i> Descontos exclusivos</li>
+                        <li><i class="fas fa-check"></i> Multiplayer online</li>
+                        <li><i class="fas fa-check"></i> Armazenamento cloud</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="PSN Plus Deluxe">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- STAR+ -->
+            <div class="service-card animate-float delay-3" data-category="mensal">
                 <div class="service-card-header">
                     <img src="logo/start.png" alt="Star+" class="service-logo">
-                    
-                    <span class="badge badge-offer">Novo</span>
+                    <h3>Star+</h3>
                 </div>
                 <div class="service-card-body">
                     <div class="service-price">
                         R$ 16,36
-                        <span>/30 dias</span>
+                        <span>/mês</span>
                     </div>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Filmes e séries</li>
@@ -123,22 +518,22 @@
                         <li><i class="fas fa-check"></i> Full HD</li>
                         <li><i class="fas fa-check"></i> Multiplataforma</li>
                     </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20STAR%2B%0A💰%20Valor:%20R$%2016,36%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <button class="service-btn open-modal" data-service="Star+">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- PlayPlus -->
-            <div class="service-card animate-float delay-3">
+            <!-- PLAYPLUS -->
+            <div class="service-card animate-float delay-4" data-category="mensal">
                 <div class="service-card-header">
                     <img src="logo/play.png" alt="PlayPlus" class="service-logo">
-                   
+                    <h3>PlayPlus</h3>
                 </div>
                 <div class="service-card-body">
                     <div class="service-price">
                         R$ 7,56
-                        <span>/30 dias</span>
+                        <span>/mês</span>
                     </div>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Catálogo diversificado</li>
@@ -146,45 +541,22 @@
                         <li><i class="fas fa-check"></i> 3 telas simultâneas</li>
                         <li><i class="fas fa-check"></i> Suporte 24/7</li>
                     </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20PLAYPLUS%0A💰%20Valor:%20R$%207,56%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <button class="service-btn open-modal" data-service="PlayPlus">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- Prime Video -->
-            <div class="service-card animate-float delay-4">
-                <div class="service-card-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg" alt="Prime Video" class="service-logo">
-                    
-                </div>
-                <div class="service-card-body">
-                    <div class="service-price">
-                        R$ 7,96
-                        <span>/30 dias</span>
-                    </div>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> 3 telas simultâneas</li>
-                        <li><i class="fas fa-check"></i> Full HD + 4K</li>
-                        <li><i class="fas fa-check"></i> Conteúdo exclusivo</li>
-                        <li><i class="fas fa-check"></i> Entrega automática</li>
-                    </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20PRIME%20VIDEO%0A💰%20Valor:%20R$%207,96%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Hulu -->
-            <div class="service-card animate-float delay-1">
+            <!-- HULU -->
+            <div class="service-card animate-float delay-1" data-category="mensal">
                 <div class="service-card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Hulu_logo_%282014%29.svg" alt="Hulu" class="service-logo">
-                    
+                    <h3>Hulu</h3>
                 </div>
                 <div class="service-card-body">
                     <div class="service-price">
                         R$ 26,76
-                        <span>/30 dias</span>
+                        <span>/mês</span>
                     </div>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Catálogo completo</li>
@@ -192,22 +564,22 @@
                         <li><i class="fas fa-check"></i> Suporte 24/7</li>
                         <li><i class="fas fa-check"></i> Entrega automática</li>
                     </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20HULU%0A💰%20Valor:%20R$%2026,76%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <button class="service-btn open-modal" data-service="Hulu">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
 
             <!-- ESPN -->
-            <div class="service-card animate-float delay-2">
+            <div class="service-card animate-float delay-2" data-category="mensal">
                 <div class="service-card-header">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/ESPN_wordmark.svg" alt="ESPN" class="service-logo">
-                    
+                    <h3>ESPN</h3>
                 </div>
                 <div class="service-card-body">
                     <div class="service-price">
                         R$ 26,76
-                        <span>/30 dias</span>
+                        <span>/mês</span>
                     </div>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Eventos esportivos ao vivo</li>
@@ -215,22 +587,22 @@
                         <li><i class="fas fa-check"></i> Multiplataforma</li>
                         <li><i class="fas fa-check"></i> Replays completos</li>
                     </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20ESPN%0A💰%20Valor:%20R$%2026,76%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <button class="service-btn open-modal" data-service="ESPN">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- TNT Sports -->
-            <div class="service-card animate-float delay-3">
+            <!-- TNT SPORTS -->
+            <div class="service-card animate-float delay-3" data-category="mensal">
                 <div class="service-card-header">
                     <img src="logo/tnt.png" alt="TNT Sports" class="service-logo">
-                    
+                    <h3>TNT Sports</h3>
                 </div>
                 <div class="service-card-body">
                     <div class="service-price">
                         R$ 17,96
-                        <span>/30 dias</span>
+                        <span>/mês</span>
                     </div>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Eventos esportivos</li>
@@ -238,223 +610,14 @@
                         <li><i class="fas fa-check"></i> Multiplataforma</li>
                         <li><i class="fas fa-check"></i> Suporte 24/7</li>
                     </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20TNT%20SPORTS%0A💰%20Valor:%20R$%2017,96%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <button class="service-btn open-modal" data-service="TNT Sports">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- YouTube Premium -->
-            <div class="service-card animate-float delay-4">
-                <div class="service-card-header">
-                    <img src="logo/you.png" alt="YouTube Premium" class="service-logo">
-                    <h3>YouTube Premium</h3>
-                </div>
-                <div class="service-card-body">
-                    <div class="service-price">
-                        R$ 10,76
-                        <span>/30 dias</span>
-                    </div>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Sem anúncios no YouTube</li>
-                        <li><i class="fas fa-check"></i> YouTube Music Premium</li>
-                        <li><i class="fas fa-check"></i> Downloads offline</li>
-                        <li><i class="fas fa-check"></i> Reprodução em segundo plano</li>
-                    </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20YOUTUBE%20PREMIUM%0A💰%20Valor:%20R$%2010,76%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Paramount+ -->
-            <div class="service-card animate-float delay-1">
-                <div class="service-card-header">
-                    <img src="logo/para.png" alt="Paramount+" class="service-logo">
-                    <h3>Paramount+</h3>
-                </div>
-                <div class="service-card-body">
-                    <div class="service-price">
-                        R$ 11,16
-                        <span>/30 dias</span>
-                    </div>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Catálogo completo</li>
-                        <li><i class="fas fa-check"></i> Séries exclusivas</li>
-                        <li><i class="fas fa-check"></i> Filmes Paramount</li>
-                        <li><i class="fas fa-check"></i> Entrega automática</li>
-                    </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20PARAMOUNT%2B%0A💰%20Valor:%20R$%2011,16%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Viki -->
-            <div class="service-card animate-float delay-2">
-                <div class="service-card-header">
-                    <i class="fas fa-globe-asia" style="font-size: 2.5rem;"></i>
-                    <h3>Viki</h3>
-                </div>
-                <div class="service-card-body">
-                    <div class="service-price">
-                        R$ 10,40
-                        <span>/30 dias</span>
-                    </div>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Dramas asiáticos</li>
-                        <li><i class="fas fa-check"></i> Legendas em português</li>
-                        <li><i class="fas fa-check"></i> Sem anúncios</li>
-                        <li><i class="fas fa-check"></i> Catálogo completo</li>
-                    </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20VIKI%0A💰%20Valor:%20R$%2010,40%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Deezer -->
-            <div class="service-card animate-float delay-3">
-                <div class="service-card-header">
-                    <img src="logo/dee.png" alt="Deezer Premium" class="service-logo">
-                    <h3>Deezer Premium</h3>
-                </div>
-                <div class="service-card-body">
-                    <div class="service-price">
-                        R$ 5,96
-                        <span>/30 dias</span>
-                    </div>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> 73 milhões de músicas</li>
-                        <li><i class="fas fa-check"></i> Downloads offline</li>
-                        <li><i class="fas fa-check"></i> Áudio de alta qualidade</li>
-                        <li><i class="fas fa-check"></i> Sem anúncios</li>
-                    </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20DEEZER%20PREMIUM%0A💰%20Valor:%20R$%205,96%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Canva Pro -->
-            <div class="service-card animate-float delay-4">
-                <div class="service-card-header">
-                    <img src="logo/canva.png" alt="Canva Pro" class="service-logo" style="filter: brightness(0) invert(1);">
-                    
-                    <span class="badge badge-offer">Oferta</span>
-                </div>
-                <div class="service-card-body">
-                    <div class="service-price">
-                        R$ 13,96
-                        <span>/30 dias</span>
-                    </div>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> 100GB de armazenamento</li>
-                        <li><i class="fas fa-check"></i> 100+ milhões de imagens</li>
-                        <li><i class="fas fa-check"></i> Fundos transparentes</li>
-                        <li><i class="fas fa-check"></i> Time de trabalho</li>
-                    </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20CANVA%20PRO%0A💰%20Valor:%20R$%2013,96%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Crunchyroll -->
-            <div class="service-card animate-float delay-1">
-                <div class="service-card-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png" alt="Crunchyroll" class="service-logo">
-                    <h3>Crunchyroll Mega Fan</h3>
-                </div>
-                <div class="service-card-body">
-                    <div class="service-price">
-                        R$ 6,00
-                        <span>/30 dias</span>
-                    </div>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Animes simultâneos</li>
-                        <li><i class="fas fa-check"></i> Sem anúncios</li>
-                        <li><i class="fas fa-check"></i> Simulcast</li>
-                        <li><i class="fas fa-check"></i> Offline viewing</li>
-                    </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20CRUNCHYROLL%20MEGA%20FAN%0A💰%20Valor:%20R$%206,00%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- ChatGPT Plus -->
-            <div class="service-card animate-float delay-2">
-                <div class="service-card-header">
-                    <i class="fas fa-robot" style="font-size: 2.5rem;"></i>
-                    <h3>ChatGPT Plus</h3>
-                    <span class="badge badge-popular">Novo</span>
-                </div>
-                <div class="service-card-body">
-                    <div class="service-price">
-                        US$ 8,00
-                        <span>/30 dias</span>
-                    </div>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Acesso ao GPT-4</li>
-                        <li><i class="fas fa-check"></i> Respostas prioritárias</li>
-                        <li><i class="fas fa-check"></i> Plugins exclusivos</li>
-                        <li><i class="fas fa-check"></i> Suporte avançado</li>
-                    </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20CHATGPT%20PLUS%0A💰%20Valor:%20US$%208,00%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Disney+ -->
-            <div class="service-card animate-float delay-3">
-                <div class="service-card-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" class="service-logo">
-                    <h3>Disney+ Premium</h3>
-                </div>
-                <div class="service-card-body">
-                    <div class="service-price">
-                        R$ 26,76
-                        <span>/30 dias</span>
-                    </div>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> 4K Ultra HD</li>
-                        <li><i class="fas fa-check"></i> Conteúdo exclusivo</li>
-                        <li><i class="fas fa-check"></i> Marvel e Star Wars</li>
-                        <li><i class="fas fa-check"></i> 4 telas simultâneas</li>
-                    </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20DISNEY%2B%20PREMIUM%0A💰%20Valor:%20R$%2026,76%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- HBO Max -->
-            <div class="service-card animate-float delay-4">
-                <div class="service-card-header">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg" alt="HBO Max" class="service-logo">
-                    
-                </div>
-                <div class="service-card-body">
-                    <div class="service-price">
-                        R$ 22,36
-                        <span>/30 dias</span>
-                    </div>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Séries exclusivas HBO</li>
-                        <li><i class="fas fa-check"></i> Filmes Warner Bros</li>
-                        <li><i class="fas fa-check"></i> 4K Ultra HD</li>
-                        <li><i class="fas fa-check"></i> 3 telas simultâneas</li>
-                    </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20HBO%20MAX%0A💰%20Valor:%20R$%2022,36%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Apple TV+ -->
-            <div class="service-card animate-float delay-1">
+            <!-- APPLE TV+ -->
+            <div class="service-card animate-float delay-4" data-category="mensal">
                 <div class="service-card-header">
                     <i class="fab fa-apple" style="font-size: 2.5rem;"></i>
                     <h3>Apple TV+</h3>
@@ -462,7 +625,7 @@
                 <div class="service-card-body">
                     <div class="service-price">
                         R$ 11,96
-                        <span>/30 dias</span>
+                        <span>/mês</span>
                     </div>
                     <ul class="service-features">
                         <li><i class="fas fa-check"></i> Conteúdo Apple Original</li>
@@ -470,9 +633,55 @@
                         <li><i class="fas fa-check"></i> 6 telas simultâneas</li>
                         <li><i class="fas fa-check"></i> Família compartilhada</li>
                     </ul>
-                    <a href="https://wa.me/5511962094589?text=Olá%20EASYSTREAM!%0A%0AGostaria%20de%20comprar%20o%20plano:%0A%0A📺%20APPLE%20TV%2B%0A💰%20Valor:%20R$%2011,96%0A📅%20Duração:%2030%20dias%0A%0APor%20favor,%20me%20envie%20as%20informações%20para%20pagamento%20via%20PIX." class="service-btn" target="_blank">
-                        Comprar Agora <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <button class="service-btn open-modal" data-service="Apple TV+">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- VIKI -->
+            <div class="service-card animate-float delay-1" data-category="mensal">
+                <div class="service-card-header">
+                    <i class="fas fa-globe-asia" style="font-size: 2.5rem;"></i>
+                    <h3>Viki</h3>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        R$ 10,40
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Dramas asiáticos</li>
+                        <li><i class="fas fa-check"></i> Legendas em português</li>
+                        <li><i class="fas fa-check"></i> Sem anúncios</li>
+                        <li><i class="fas fa-check"></i> Catálogo completo</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="Viki">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CHATGPT PLUS -->
+            <div class="service-card animate-float delay-2" data-category="mensal">
+                <div class="service-card-header">
+                    <i class="fas fa-robot" style="font-size: 2.5rem;"></i>
+                    <h3>ChatGPT Plus</h3>
+                </div>
+                <div class="service-card-body">
+                    <div class="service-price">
+                        US$ 8,00
+                        <span>/mês</span>
+                    </div>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Acesso ao GPT-4</li>
+                        <li><i class="fas fa-check"></i> Respostas prioritárias</li>
+                        <li><i class="fas fa-check"></i> Plugins exclusivos</li>
+                        <li><i class="fas fa-check"></i> Suporte avançado</li>
+                    </ul>
+                    <button class="service-btn open-modal" data-service="ChatGPT Plus">
+                        Ver Planos <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -489,15 +698,17 @@
             <div class="combo-selection">
                 <h3>Selecione os serviços:</h3>
                 <div class="combo-services-list">
-                    <div class="combo-service-item" data-service="netflix" data-price="23.96">
+                    <!-- NETFLIX -->
+                    <div class="combo-service-item" data-service="netflix" data-price="29.90">
                         <input type="checkbox" id="service-netflix">
                         <label for="service-netflix">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="service-icon">
-                            <span></span>
-                            <span class="service-price-tag">R$ 23,96</span>
+                            <span>Netflix 4K</span>
+                            <span class="service-price-tag">R$ 29,90</span>
                         </label>
                     </div>
                     
+                    <!-- STAR+ -->
                     <div class="combo-service-item" data-service="startplus" data-price="16.36">
                         <input type="checkbox" id="service-startplus">
                         <label for="service-startplus">
@@ -507,6 +718,7 @@
                         </label>
                     </div>
                     
+                    <!-- PLAYPLUS -->
                     <div class="combo-service-item" data-service="playplus" data-price="7.56">
                         <input type="checkbox" id="service-playplus">
                         <label for="service-playplus">
@@ -516,15 +728,17 @@
                         </label>
                     </div>
                     
-                    <div class="combo-service-item" data-service="prime" data-price="7.96">
+                    <!-- PRIME VIDEO -->
+                    <div class="combo-service-item" data-service="prime" data-price="14.90">
                         <input type="checkbox" id="service-prime">
                         <label for="service-prime">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg" alt="Prime Video" class="service-icon">
                             <span>Prime Video</span>
-                            <span class="service-price-tag">R$ 7,96</span>
+                            <span class="service-price-tag">R$ 14,90</span>
                         </label>
                     </div>
                     
+                    <!-- HULU -->
                     <div class="combo-service-item" data-service="hulu" data-price="26.76">
                         <input type="checkbox" id="service-hulu">
                         <label for="service-hulu">
@@ -534,6 +748,7 @@
                         </label>
                     </div>
                     
+                    <!-- ESPN -->
                     <div class="combo-service-item" data-service="espn" data-price="26.76">
                         <input type="checkbox" id="service-espn">
                         <label for="service-espn">
@@ -543,6 +758,7 @@
                         </label>
                     </div>
                     
+                    <!-- TNT SPORTS -->
                     <div class="combo-service-item" data-service="tntsports" data-price="17.96">
                         <input type="checkbox" id="service-tntsports">
                         <label for="service-tntsports">
@@ -552,24 +768,87 @@
                         </label>
                     </div>
                     
-                    <div class="combo-service-item" data-service="youtube" data-price="10.76">
+                    <!-- YOUTUBE PREMIUM -->
+                    <div class="combo-service-item" data-service="youtube" data-price="18.90">
                         <input type="checkbox" id="service-youtube">
                         <label for="service-youtube">
                             <img src="logo/you.png" alt="YouTube Premium" class="service-icon">
                             <span>YouTube Premium</span>
-                            <span class="service-price-tag">R$ 10,76</span>
+                            <span class="service-price-tag">R$ 18,90</span>
                         </label>
                     </div>
                     
-                    <div class="combo-service-item" data-service="paramount" data-price="11.16">
+                    <!-- DISNEY+ -->
+                    <div class="combo-service-item" data-service="disney" data-price="19.90">
+                        <input type="checkbox" id="service-disney">
+                        <label for="service-disney">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" class="service-icon">
+                            <span>Disney+</span>
+                            <span class="service-price-tag">R$ 19,90</span>
+                        </label>
+                    </div>
+                    
+                    <!-- HBO MAX -->
+                    <div class="combo-service-item" data-service="hbo" data-price="19.90">
+                        <input type="checkbox" id="service-hbo">
+                        <label for="service-hbo">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg" alt="HBO Max" class="service-icon">
+                            <span>HBO Max</span>
+                            <span class="service-price-tag">R$ 19,90</span>
+                        </label>
+                    </div>
+                    
+                    <!-- PARAMOUNT+ -->
+                    <div class="combo-service-item" data-service="paramount" data-price="14.90">
                         <input type="checkbox" id="service-paramount">
                         <label for="service-paramount">
                             <img src="logo/para.png" alt="Paramount+" class="service-logo">
                             <span>Paramount+</span>
-                            <span class="service-price-tag">R$ 11,16</span>
+                            <span class="service-price-tag">R$ 14,90</span>
                         </label>
                     </div>
                     
+                    <!-- CRUNCHYROLL -->
+                    <div class="combo-service-item" data-service="crunchyroll" data-price="12.90">
+                        <input type="checkbox" id="service-crunchyroll">
+                        <label for="service-crunchyroll">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png" alt="Crunchyroll" class="service-icon">
+                            <span>Crunchyroll</span>
+                            <span class="service-price-tag">R$ 12,90</span>
+                        </label>
+                    </div>
+                    
+                    <!-- SPOTIFY -->
+                    <div class="combo-service-item" data-service="spotify" data-price="14.90">
+                        <input type="checkbox" id="service-spotify">
+                        <label for="service-spotify">
+                            <i class="fab fa-spotify" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                            <span>Spotify Premium</span>
+                            <span class="service-price-tag">R$ 14,90</span>
+                        </label>
+                    </div>
+                    
+                    <!-- DEEZER -->
+                    <div class="combo-service-item" data-service="deezer" data-price="14.90">
+                        <input type="checkbox" id="service-deezer">
+                        <label for="service-deezer">
+                            <img src="logo/dee.png" alt="Deezer Premium" class="service-icon">
+                            <span>Deezer Premium</span>
+                            <span class="service-price-tag">R$ 14,90</span>
+                        </label>
+                    </div>
+                    
+                    <!-- CANVA PRO -->
+                    <div class="combo-service-item" data-service="canva" data-price="24.90">
+                        <input type="checkbox" id="service-canva">
+                        <label for="service-canva">
+                            <img src="logo/canva.png" alt="Canva Pro" class="service-icon">
+                            <span>Canva Pro</span>
+                            <span class="service-price-tag">R$ 24,90</span>
+                        </label>
+                    </div>
+
+                    <!-- VIKI -->
                     <div class="combo-service-item" data-service="viki" data-price="10.40">
                         <input type="checkbox" id="service-viki">
                         <label for="service-viki">
@@ -578,67 +857,74 @@
                             <span class="service-price-tag">R$ 10,40</span>
                         </label>
                     </div>
-                    
-                    <div class="combo-service-item" data-service="deezer" data-price="5.96">
-                        <input type="checkbox" id="service-deezer">
-                        <label for="service-deezer">
-                            <img src="logo/dee.png" alt="Deezer Premium" class="service-icon">
-                            <span>Deezer Premium</span>
-                            <span class="service-price-tag">R$ 5,96</span>
-                        </label>
-                    </div>
-                    
-                    <div class="combo-service-item" data-service="canva" data-price="13.96">
-                        <input type="checkbox" id="service-canva">
-                        <label for="service-canva">
-                            <img src="logo/canva.png" alt="Canva Pro" class="service-icon">
-                            <span>Canva Pro</span>
-                            <span class="service-price-tag">R$ 13,96</span>
-                        </label>
-                    </div>
-                    
-                    <div class="combo-service-item" data-service="crunchyroll" data-price="6.00">
-                        <input type="checkbox" id="service-crunchyroll">
-                        <label for="service-crunchyroll">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png" alt="Crunchyroll" class="service-icon">
-                            <span>Crunchyroll Mega Fan</span>
-                            <span class="service-price-tag">R$ 6,00</span>
-                        </label>
-                    </div>
 
-                    <div class="combo-service-item" data-service="chatgpt" data-price="40.00">
-                        <input type="checkbox" id="service-chatgpt">
-                        <label for="service-chatgpt">
-                            <i class="fas fa-robot" style="color: var(--secondary); font-size: 1.5rem;"></i>
-                            <span>ChatGPT Plus</span>
-                            <span class="service-price-tag">US$ 8,00</span>
-                        </label>
-                    </div>
-
-                    <div class="combo-service-item" data-service="disney" data-price="26.76">
-                        <input type="checkbox" id="service-disney">
-                        <label for="service-disney">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" class="service-icon">
-                            <span>Disney+ Premium</span>
-                            <span class="service-price-tag">R$ 26,76</span>
-                        </label>
-                    </div>
-
-                    <div class="combo-service-item" data-service="hbo" data-price="22.36">
-                        <input type="checkbox" id="service-hbo">
-                        <label for="service-hbo">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg" alt="HBO Max" class="service-icon">
-                            <span>HBO Max</span>
-                            <span class="service-price-tag">R$ 22,36</span>
-                        </label>
-                    </div>
-
+                    <!-- APPLE TV+ -->
                     <div class="combo-service-item" data-service="apple" data-price="11.96">
                         <input type="checkbox" id="service-apple">
                         <label for="service-apple">
                             <i class="fab fa-apple" style="color: var(--secondary); font-size: 1.5rem;"></i>
                             <span>Apple TV+</span>
                             <span class="service-price-tag">R$ 11,96</span>
+                        </label>
+                    </div>
+
+                    <!-- GLOBOPLAY -->
+                    <div class="combo-service-item" data-service="globoplay" data-price="17.90">
+                        <input type="checkbox" id="service-globoplay">
+                        <label for="service-globoplay">
+                            <i class="fas fa-globe-americas" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                            <span>Globoplay</span>
+                            <span class="service-price-tag">R$ 17,90</span>
+                        </label>
+                    </div>
+
+                    <!-- UFC FIGHT PASS -->
+                    <div class="combo-service-item" data-service="ufc" data-price="19.90">
+                        <input type="checkbox" id="service-ufc">
+                        <label for="service-ufc">
+                            <i class="fas fa-fist-raised" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                            <span>UFC Fight Pass</span>
+                            <span class="service-price-tag">R$ 19,90</span>
+                        </label>
+                    </div>
+
+                    <!-- PREMIERE PLAY -->
+                    <div class="combo-service-item" data-service="premiere" data-price="29.90">
+                        <input type="checkbox" id="service-premiere">
+                        <label for="service-premiere">
+                            <i class="fas fa-futbol" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                            <span>Premiere Play</span>
+                            <span class="service-price-tag">R$ 29,90</span>
+                        </label>
+                    </div>
+
+                    <!-- TELECINE PLAY -->
+                    <div class="combo-service-item" data-service="telecine" data-price="22.90">
+                        <input type="checkbox" id="service-telecine">
+                        <label for="service-telecine">
+                            <i class="fas fa-film" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                            <span>Telecine Play</span>
+                            <span class="service-price-tag">R$ 22,90</span>
+                        </label>
+                    </div>
+
+                    <!-- PSN PLUS DELUXE -->
+                    <div class="combo-service-item" data-service="psn" data-price="49.90">
+                        <input type="checkbox" id="service-psn">
+                        <label for="service-psn">
+                            <i class="fab fa-playstation" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                            <span>PSN Plus Deluxe</span>
+                            <span class="service-price-tag">R$ 49,90</span>
+                        </label>
+                    </div>
+
+                    <!-- GAME PASS ULTIMATE -->
+                    <div class="combo-service-item" data-service="gamepass" data-price="69.90">
+                        <input type="checkbox" id="service-gamepass">
+                        <label for="service-gamepass">
+                            <i class="fas fa-gamepad" style="color: var(--secondary); font-size: 1.5rem;"></i>
+                            <span>Game Pass Ultimate</span>
+                            <span class="service-price-tag">R$ 69,90</span>
                         </label>
                     </div>
                 </div>
@@ -891,12 +1177,12 @@
             <div class="footer-col">
                 <h4>Serviços Populares</h4>
                 <ul>
-                    <li><a href="#services">Netflix 4K Ultra HD</a></li>
-                    <li><a href="#services">YouTube Premium</a></li>
-                    <li><a href="#services">Disney+ Premium</a></li>
-                    <li><a href="#services">HBO Max</a></li>
-                    <li><a href="#services">ChatGPT Plus</a></li>
-                    <li><a href="#services">Star+</a></li>
+                    <li><a href="#all-plans">Netflix 4K Ultra HD</a></li>
+                    <li><a href="#all-plans">YouTube Premium</a></li>
+                    <li><a href="#all-plans">Disney+ Premium</a></li>
+                    <li><a href="#all-plans">HBO Max</a></li>
+                    <li><a href="#all-plans">Spotify Premium</a></li>
+                    <li><a href="#all-plans">Star+</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -924,6 +1210,31 @@
         </div>
     </footer>
 
+    <!-- Modal para todos os planos -->
+    <div class="modal-overlay" id="plansModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-tv"></i> <span id="modalServiceName">Escolha seu Plano</span></h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="plansContainer">
+                    <!-- Planos serão carregados dinamicamente aqui -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="selected-plan-summary" id="selectedPlanSummary" style="display: none;">
+                    <h4>Plano Selecionado:</h4>
+                    <p id="selectedPlanText"></p>
+                </div>
+                <button class="modal-buy-btn" id="modalBuyBtn" style="display: none;">
+                    <i class="fab fa-whatsapp"></i> Comprar Agora - <span id="selectedPrice">R$ 0,00</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="plans-modal.js"></script>
     <script>
         // Hamburger Menu Toggle
         const hamburger = document.getElementById('hamburger');
@@ -999,23 +1310,29 @@
         // Combo Builder Functionality
         const comboBuilder = {
             services: {
-                netflix: { name: 'Netflix 4K Ultra HD', price: 23.96, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg' },
+                netflix: { name: 'Netflix 4K', price: 29.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg' },
                 startplus: { name: 'Star+', price: 16.36, icon: 'logo/start.png' },
                 playplus: { name: 'PlayPlus', price: 7.56, icon: 'logo/play.png' },
-                prime: { name: 'Prime Video', price: 7.96, icon: 'https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg' },
+                prime: { name: 'Prime Video', price: 14.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg' },
                 hulu: { name: 'Hulu', price: 26.76, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/03/Hulu_logo_%282014%29.svg' },
                 espn: { name: 'ESPN', price: 26.76, icon: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/ESPN_wordmark.svg' },
                 tntsports: { name: 'TNT Sports', price: 17.96, icon: 'logo/tnt.png' },
-                youtube: { name: 'YouTube Premium', price: 10.76, icon: 'logo/you.png' },
-                paramount: { name: 'Paramount+', price: 11.16, icon: 'logo/para.png' },
+                youtube: { name: 'YouTube Premium', price: 18.90, icon: 'logo/you.png' },
+                disney: { name: 'Disney+', price: 19.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg' },
+                hbo: { name: 'HBO Max', price: 19.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg' },
+                paramount: { name: 'Paramount+', price: 14.90, icon: 'logo/para.png' },
+                crunchyroll: { name: 'Crunchyroll', price: 12.90, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png' },
+                spotify: { name: 'Spotify Premium', price: 14.90, icon: 'fab fa-spotify' },
+                deezer: { name: 'Deezer Premium', price: 14.90, icon: 'logo/dee.png' },
+                canva: { name: 'Canva Pro', price: 24.90, icon: 'logo/canva.png' },
                 viki: { name: 'Viki', price: 10.40, icon: 'fas fa-globe-asia' },
-                deezer: { name: 'Deezer Premium', price: 5.96, icon: 'logo/dee.png' },
-                canva: { name: 'Canva Pro', price: 13.96, icon: 'logo/canva.png' },
-                crunchyroll: { name: 'Crunchyroll Mega Fan', price: 6.00, icon: 'https://upload.wikimedia.org/wikipedia/commons/0/08/Crunchyroll_Logo.png' },
-                chatgpt: { name: 'ChatGPT Plus', price: 40.00, icon: 'fas fa-robot' }, // US$ 8,00 convertido para R$ (aproximadamente)
-                disney: { name: 'Disney+ Premium', price: 26.76, icon: 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg' },
-                hbo: { name: 'HBO Max', price: 22.36, icon: 'https://upload.wikimedia.org/wikipedia/commons/1/17/HBO_Max_Logo.svg' },
-                apple: { name: 'Apple TV+', price: 11.96, icon: 'fab fa-apple' }
+                apple: { name: 'Apple TV+', price: 11.96, icon: 'fab fa-apple' },
+                globoplay: { name: 'Globoplay', price: 17.90, icon: 'fas fa-globe-americas' },
+                ufc: { name: 'UFC Fight Pass', price: 19.90, icon: 'fas fa-fist-raised' },
+                premiere: { name: 'Premiere Play', price: 29.90, icon: 'fas fa-futbol' },
+                telecine: { name: 'Telecine Play', price: 22.90, icon: 'fas fa-film' },
+                psn: { name: 'PSN Plus Deluxe', price: 49.90, icon: 'fab fa-playstation' },
+                gamepass: { name: 'Game Pass Ultimate', price: 69.90, icon: 'fas fa-gamepad' }
             },
             
             selectedServices: [],

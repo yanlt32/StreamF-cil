@@ -1450,3 +1450,307 @@ footer::before {
         font-size: 1.3rem;
     }
 }
+/* ========== PLANOS E MODAL ========== */
+.plans-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem auto 3rem;
+    flex-wrap: wrap;
+    max-width: 1400px;
+}
+
+.filter-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(108, 92, 231, 0.2);
+    color: var(--gray);
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    color: var(--light);
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    padding: 1rem;
+}
+
+.modal-overlay.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal {
+    background: var(--dark);
+    border-radius: 1rem;
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(108, 92, 231, 0.3);
+    position: relative;
+}
+
+.modal-header {
+    padding: 1.5rem;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.modal-header h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.modal-close {
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.5rem;
+}
+
+.modal-close:hover {
+    background: rgba(0, 0, 0, 0.4);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.plans-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.plan-option {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.plan-option:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    background: rgba(108, 92, 231, 0.1);
+}
+
+.plan-option.selected {
+    border-color: var(--secondary);
+    background: rgba(0, 206, 255, 0.1);
+}
+
+.plan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.plan-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--light);
+    margin: 0;
+}
+
+.plan-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.plan-duration {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-top: 0.25rem;
+}
+
+.plan-description {
+    color: var(--gray);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.plan-features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.plan-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+.plan-features li i {
+    color: var(--secondary);
+    font-size: 0.8rem;
+}
+
+.select-plan-btn {
+    width: 100%;
+    margin-top: 1rem;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.select-plan-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+}
+
+.modal-footer {
+    padding: 1.5rem 2rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.selected-plan-summary {
+    background: rgba(0, 206, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid var(--secondary);
+}
+
+.selected-plan-summary h4 {
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.selected-plan-summary p {
+    color: var(--light);
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.modal-buy-btn {
+    background: linear-gradient(90deg, var(--whatsapp), var(--whatsapp-dark));
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+}
+
+.modal-buy-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Badges para planos */
+.badge-new {
+    background: linear-gradient(90deg, var(--neon), #00cc88);
+    color: var(--dark);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+    font-weight: 700;
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    animation: pulse 2s infinite;
+}
+
+.badge-promo {
+    background: linear-gradient(90deg, var(--accent), #ff6b9d);
+    color: white;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+    font-weight: 700;
+    position: absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsivo para modal */
+@media (max-width: 768px) {
+    .modal {
+        max-width: 95%;
+        max-height: 95vh;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+    
+    .plans-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .plan-option {
+        padding: 1.25rem;
+    }
+}
